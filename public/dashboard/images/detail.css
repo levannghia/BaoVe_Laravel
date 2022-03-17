@@ -1,0 +1,86 @@
+.main-content {
+    margin: 50px 0;
+}
+
+.img-small {
+    padding: 10px 0;
+}
+.img-flu img {
+    width: 100%;
+}
+.similar-products{
+    margin-top: 50px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #006600;
+}
+.similar p{
+    text-align: center;
+}
+.pagination-product{
+    text-align: center;
+}
+.vertical-menu{
+    list-style: none;
+    background: #f7f7f7;
+    padding-left: 10px;
+}
+.vertical-menu li:hover{
+    background: #006600;
+    color: white;
+}
+.li-vertical::before{
+    content: "»";
+  color: red;
+  margin-right: 10px;
+}
+.li-vertical{
+    padding: 10px 0;
+    color: #28a745;
+    border-bottom: 1px white solid;
+}
+.price-product{
+    color: white;
+    padding: 5px 10px;
+    background: red;
+    border-radius: 5px
+}
+.price-product:hover{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+/*  */
+/* .noselect{
+    background-color: transparent;
+	position: relative;
+	box-shadow: 10px 10px 42px 0 rgba(0,0,0,0.75);
+}
+.noselect:after, .noselect:before{
+	mix-blend-mode:multiply;
+	filter:none;
+	z-index: -1;
+	content:'';
+	width:calc(100% + (50px * 2));
+	height:calc(100% + (50px * 2));
+	position: absolute;
+	display: block;
+	animation: border 10s ease-in-out infinite;
+	transform:translateX(-50px) translateY(-50px);
+}
+@keyframes border {
+  0%, 100% {
+    -webkit-clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
+            clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
+  }
+  50% {
+    -webkit-clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
+            clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
+  }
+}
+
+.noselect:before {
+	background-color: #AA4465;
+	  clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
+} */

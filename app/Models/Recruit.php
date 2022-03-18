@@ -11,5 +11,5 @@ class Recruit extends Model implements TranslatableContract
 {
     use Translatable;
     use HasFactory;
-    public $translatedAttributes = ['title', 'description', 'content', 'news_id','locale'];
+    public $translatedAttributes = ['title', 'description', 'content', 'recruit_id','locale'];
 }

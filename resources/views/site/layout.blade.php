@@ -1,8 +1,10 @@
 @php
 use App\Models\Config;
-$footer = DB::table('pages')
-    ->where('slug', 'footer')
-    ->first();
+use App\Models\PageTranslation;
+use Illuminate\Support\Facades\Session;
+
+$locale = Session::get('locale');
+$footer = PageTranslation::join('pages','pages.id','=','page_translations.page_id')->where('page_translations.locale',$locale)->where('pages.slug','footer')->first();
 $favicon = DB::table('photos')
     ->where('type', 'favicon')
     ->first();

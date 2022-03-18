@@ -9,5 +9,5 @@ class RecruitTranslation extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['title', 'description', 'content', 'category_id','locale'];
+    protected $fillable = ['title', 'description', 'content', 'recruit_id','locale'];
 }

@@ -28,6 +28,7 @@ use App\Http\Controllers\site\VideoSiteController;
 use App\Http\Controllers\site\CartController;
 use App\Http\Controllers\site\LocationController;
 use App\Http\Controllers\site\OrderSiteController;
+use App\Http\Controllers\site\RecruitSiteController;
 use App\Http\Controllers\site\ServiceSiteController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -78,6 +79,10 @@ Route::get("/tin-tuc", [NewsSiteController::class, "getAllNews"])->name('get.new
 //service
 Route::get("/dich-vu/{slug}", [ServiceSiteController::class, "getServiceBySlug"])->name('get.service.slug');
 Route::get("/dich-vu", [ServiceSiteController::class, "getAllService"])->name('get.service');
+
+//recruit
+Route::get("/tuyen-dung/{slug}", [RecruitSiteController::class, "getRecruitBySlug"])->name('get.recruit.slug');
+Route::get("/tuyen-dung", [RecruitSiteController::class, "getAllRecruit"])->name('get.recruit');
 
 //page
 Route::get("/lien-he", [PageSiteController::class, "getPageLienHe"])->name('get.page.lien.he');

@@ -1,28 +1,28 @@
 @php
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443 ? 'https://' : 'http://';
-$urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/news/thumb/' . $news->photo;
+$urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/service/thumb/' . $recruit->photo;
 @endphp
 @extends('site.layout')
 @section('PHOTO', $urlPhoto)
-@section('SEO_title', $news->title)
-@section('SEO_keywords', $news->keywords)
+@section('SEO_title', $recruit->title)
+@section('SEO_keywords', $recruit->keywords)
 @if (isset($image->mimeType) && isset($image->width) && isset($image->height))
     @section('mimeType', $image->mimeType)
     @section('width', $image->width)
     @section('height', $image->height)
 @endif
-@section('SEO_description', $news->keywords)
+@section('SEO_description', $recruit->keywords)
 @section('content')
     <div class="main-content-contacts">
         <div class="container">
+            <div class="tieude_giua">
+                <div>{{$recruit->title}}</div><span></span>
+            </div>
             <div class="main-content-wrapper">
-                <div class="tieude_giua">
-                    <div>{{$news->title}}</div><span></span>
-                </div>
                 <div class="clears"></div>
                 <div id="main-content" class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        {!! $news->content !!}
+                        {!! $recruit->content !!}
                     </div>
                 </div>
                 {{-- <div class="fb-share-button" data-href="" data-layout="button_count" data-size="small"><a target="_blank" href="{{URL::current()}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div> --}}
@@ -32,21 +32,22 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/news/thum
                     <div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="1"
                         data-color="blue" data-customize="false"></div>
                 </div>
-                <div class="clear" style="padding-bottom: 20px;"></div>
-                <div class="news-lien-quan">
+                {{-- <div class="clear" style="padding-bottom: 20px;"></div> --}}
+                {{-- <div class="news-lien-quan">
                     <p style="font-style: italic; font-weight: bold; margin-bottom: 0px;">Bài viết khác:</p>
                     <ul>
-                        @foreach ($news_lq as $item)
+                        @foreach ($recruit_lq as $item)
                             <?php
                             
                             $date = new DateTime($item->created_at);
                         
                             ?>
-                            <li><a href="/tin-tuc/{{ $item->slug }}" title="{{ $item->title }}">{{ $item->title }}</a>
+                            <li><a href="/dich-vu/{{ $item->slug }}" title="{{ $item->title }}">{{ $item->title }}</a>
                                 - {{ $date->format('d/m/Y'); }}</li>
                         @endforeach
                     </ul>
-                </div>
+                    {{$recruit_lq->links()}}
+                </div> --}}
 
             </div>
         </div>

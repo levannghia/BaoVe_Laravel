@@ -4,15 +4,16 @@ namespace App\Http\Controllers\site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Config;
+use App\Models\Recruit;
+use App\Models\RecruitTranslation;
 use App\Models\SeoPage;
-use App\Models\NewsTranslation;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class NewsSiteController extends Controller
+class RecruitSiteController extends Controller
 {
-    public function getNewsBySlug($slug)
+    public function getRecruitBySlug($slug)
     {
         $settings = Config::all(['name', 'value'])
             ->keyBy('name')
@@ -26,17 +27,15 @@ class NewsSiteController extends Controller
             "height" => 400,
         ]));
         $locale = Session::get('locale');
-        $news = NewsTranslation::join('news','news.id','=','news_translations.news_id')->where('news_translations.locale',$locale)
-        ->where('news.status', 1)->where('news.slug',$slug)->first();
-        $news_lq = DB::table('news_translations')->join('news','news.id','=','news_translations.news_id')->where('news_translations.locale',$locale)
-        ->where('news.status', 1)->where('news.id','!=',$news->news_id)->paginate(6);
-        if(isset($news)){
-            return view('site.news.new_detail',compact('news','image','news_lq'));
+        $recruit = RecruitTranslation::join('recruits','recruits.id','=','recruit_translations.recruit_id')->where('recruit_translations.locale',$locale)
+        ->where('recruits.status', 1)->where('recruits.slug',$slug)->first();
+        if(isset($recruit)){
+            return view('site.recruit.recruit_detail',compact('recruit','image'));
         }
         return abort(404);
     }
 
-    public function getAllNews()
+    public function getAllRecruit()
     {
         $settings = Config::all(['name', 'value'])
             ->keyBy('name')
@@ -49,8 +48,8 @@ class NewsSiteController extends Controller
             $seoPage->options
         );
         $locale = Session::get('locale');
-        $news = NewsTranslation::join('news','news.id','=','news_translations.news_id')->where('news_translations.locale',$locale)
-        ->where('news.status', 1)->orderBy('news.id', 'DESC')->paginate($settings['PHAN_TRANG_BAI_VIET']);
-        return view('site.news.index', compact('news', 'settings', 'seoPage','image'));
+        $recruit = RecruitTranslation::join('recruits','recruits.id','=','recruit_translations.service_id')->where('recruit_translations.locale',$locale)
+        ->where('recruits.status', 1)->orderBy('recruits.id', 'DESC')->paginate($settings['PHAN_TRANG_BAI_VIET']);
+        return view('site.recruit.index', compact('recruit', 'settings', 'seoPage','image'));
     }
 }

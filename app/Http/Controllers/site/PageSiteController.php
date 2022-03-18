@@ -10,6 +10,8 @@ use App\Models\Contact;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\Models\SeoPage;
+use App\Models\PageTranslation;
+use Illuminate\Support\Facades\Session;
 
 class PageSiteController extends Controller
 {
@@ -21,13 +23,16 @@ class PageSiteController extends Controller
                 return $setting->value; // return only the value
             })
             ->toArray();
-        $page = DB::table('pages')->where('slug','lien-he')->first();
+        $locale = Session::get('locale');
+
+        $page = PageTranslation::join('pages', 'pages.id', '=', 'page_translations.page_id')->where('page_translations.locale', $locale)
+            ->where('pages.slug', 'lien-he')->first();
         $seoPage = SeoPage::where('type', 'lien-he')->first();
         $image = json_decode(
             $seoPage->options
         );
         //dd($image);
-        return view('site.contact.index',compact('page','settings','seoPage','image'));
+        return view('site.contact.index', compact('page', 'settings', 'seoPage', 'image'));
     }
 
     public function getPageGioiThieu()
@@ -38,17 +43,21 @@ class PageSiteController extends Controller
                 return $setting->value; // return only the value
             })
             ->toArray();
-        $page = DB::table('pages')->where('slug','gioi-thieu')->first();
+        $locale = Session::get('locale');
+
+        $page = PageTranslation::join('pages', 'pages.id', '=', 'page_translations.page_id')->where('page_translations.locale', $locale)
+            ->where('pages.slug', 'gioi-thieu')->first();
         $seoPage = SeoPage::where('type', 'gioi-thieu')->first();
         $image = json_decode(
             $seoPage->options
         );
         //dd($image);
-        return view('site.about.index',compact('page','settings','seoPage','image'));
+        return view('site.about.index', compact('page', 'settings', 'seoPage', 'image'));
     }
 
-    public function postLienHe(Request $request){
-       
+    public function postLienHe(Request $request)
+    {
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:40',
             'phone' => 'required|numeric',

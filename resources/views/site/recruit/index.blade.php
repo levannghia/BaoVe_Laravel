@@ -16,26 +16,26 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
     <div class="main-content-contacts">
         <div class="container">
             <div class="tieude_giua">
-                <div>{{__('lang.service')}}</div><span></span>
+                <div>Dịch vụ</div><span></span>
             </div>
             <div class="main-content-wrapper">
                 <div class="clears"></div>
 
                 <div id="main-content" class="row">
                     {{-- <div class="col-md-6"> --}}
-                    @foreach ($service as $item)
+                    @foreach ($recruit as $item)
                         <div class="col-md-6">
                             <a class="main-content-a" href="/dich-vu/{{ $item->slug }}">
                                 <div class="border-content-tintuc">
                                     <div class="row" style="margin-bottom: 20px;">
                                         <div class="col-md-6 content_image">
                                             <div class="img-news img-news-tintuc">
-                                                <img src="public/upload/images/service/thumb/{{ $item->photo }}" alt="">
+                                                <img src="public/upload/images/recruit/thumb/{{ $item->photo }}" alt="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 ">
                                             <div class="text-news">
-                                                <a href="/dich-vu/{{ $item->slug }}">
+                                                <a href="/tuyen-dung/{{ $item->slug }}">
                                                     <h4 class="title-news title_tintuc">
                                                         {{ $item->title }}
                                                     </h4>
@@ -52,7 +52,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                     @endforeach
                     {{-- </div> --}}
                 </div>
-                {{ $service->links() }}
+                {{ $recruit->links() }}
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             <h2 class="product-new">GIỚI THIỆU VỀ CHÚNG TÔI</h2>
             <div class="pr">
                 <p>{!! substr($pageGT->content, 0, 900) !!}</p>
-                <a class="xt" href="/gioi-thieu">Xem thêm</a>
+                <a class="xt" href="/gioi-thieu">{{__('lang.more')}}</a>
             </div>
             <div class="clears"></div>
             <div class="service-blocks">
@@ -50,23 +50,16 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             <div class="box-center mt-5">
                 <div class="row">
                     <div class="col-md-6 box-logo">
-                        <div class="box-tintuc-head-mt">TIN TUYỂN DỤNG</div>
+                        <div class="box-tintuc-head-mt">{{__('lang.recruitment2')}}</div>
                         <div class="box-tintuc-ct-mt">
                             <div class="box-tintuc-ct-mt1">
                                 <div class="box-tintuc-ten-mt1">
-                                    <p>TUYỂN DỤNG TẠI NHẬT KHÁNH PHÁT</p>
+                                    <p>{{$recruit->title}}</p>
                                 </div>
                                 <div class="mota-tintuc-mt">
-                                    CÔNG TY NHẬT KHÁNH PHÁT là Công ty bảo vệ chuyên nghiệp, hiện nay đang thực hiện công
-                                    tác bảo vệ cho một số cơ sở hoạt động kinh doanh trực thuộc Quân đội và Nhà nước nay
-                                    chúng tôi có nhu cầu tuyển dụng nhân viên bảo vệ với yêu cầu và chế độ đãi ngộ như sau :
-
-                                    I. ĐỐI TƯỢNG VÀ TIÊU CHUẨN TUYỂN DỤNG :
-
-                                    1. Đối tượng :
-
-                                    Là công dân Việt Nam không tiền án tiền sự. </div>
-                                <a href="tuyen-dung/tuyen-dung-tai-nhat-khanh-phat-19.html">Xem thêm ...</a>
+                                    {{ $recruit->description }}
+                                </div>
+                                <a href="/tuyen-dung/{{$recruit->slug}}"> {{__('lang.more')}} ...</a>
                                 <div class="clear"></div>
                             </div>
                         </div>
@@ -94,12 +87,8 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
 
         <div class="banner-criteria">
             <div class="container">
-                <h2 class="distance">TIÊU CHÍ SỰ LỰA CHỌN</h2>
-                <p class="discription">Dịch vụ bảo vệ chuyên nghiệp nhất với đội ngũ nhân viên được đào tạo và cấp chứng
-                    chỉ
-                    nghiệp vụ bảo vệ. Chính sách đào tạo và giữ nhân viên gắn bó với công ty giúp chúng tôi có lực lượng bảo
-                    vệ
-                    chuyên nghiệp nhất</p>
+                <h2 class="distance">{{__('lang.criteria')}}</h2>
+                <p class="discription">{{__('lang.title_criteria')}}</p>
                 <div class="row criteria-blocks">
                     <div class="owl-carousel owl-theme">
                         @foreach ($standard as $key => $item)
@@ -120,7 +109,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             </div>
         </div>
 
-        <div class="container">
+        {{-- <div class="container">
             <div class="video-clip">
                 <h2 class="product-new">Video Clip</h2>
                 <p class="sk-fml">Góc chia sẽ cẩm nang về thiết bị y tế chúng tôi gữi đến các bạn</p>
@@ -141,7 +130,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                     </div>
                 </div>
             </div>
-            {{-- <div class="news-events">
+            <div class="news-events">
                 <div class="row">
                     <div class="col-md-6">
                         <h2 class="news-events-title">TIN TỨC & SỰ KIỆN</h2>
@@ -191,8 +180,8 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                         </div>
                     </div>
                 </div>
-            </div> --}}
-        </div>
+            </div>
+        </div> --}}
         <div class="banner-criteria banner-imgall">
             <div class="container">
                 <h2 class="distance">ALBUM HÌNH ẢNH</h2>
@@ -270,7 +259,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 loop: true,
                 margin: 10,
                 nav: false,
-                autoplay: false,
+                autoplay: true,
                 autoplayTimeout: 5000,
                 responsive: {
                     0: {
@@ -290,8 +279,8 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 margin: 10,
                 nav: false,
                 dots: false,
-                autoplay: false,
-                autoplayTimeout: 5000,
+                autoplay: true,
+                autoplayTimeout: 4000,
                 responsive: {
                     0: {
                         items: 1
@@ -310,8 +299,8 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 dots: false,
                 margin: 10,
                 nav: false,
-                autoplay: false,
-                autoplayTimeout: 5000,
+                autoplay: true,
+                autoplayTimeout: 4000,
                 responsive: {
                     0: {
                         items: 2

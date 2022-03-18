@@ -12,8 +12,11 @@ use App\Models\Products;
 use App\Models\Standard;
 use App\Models\News;
 use App\Models\Photo;
+use App\Models\Recruit;
+use App\Models\RecruitTranslation;
 use App\Models\Review;
 use App\Models\ServiceTranslation;
+use App\Models\PageTranslation;
 use App\Models\Video;
 use File;
 use Illuminate\Support\Facades\Session;
@@ -52,16 +55,17 @@ class HomeController extends Controller
         $review = Review::where('status',1)->where('noi_bac',1)->get();
         $slider = Photo::where('status',1)->where('type','slide')->orderBy('stt','ASC')->get();
         $video = Video::where('status',1)->where('noi_bac',1)->orderBy('id','DESC')->limit(3)->get();
-        $news = News::where('status', 1)->where('noi_bac', 1)->orderBy('id', 'DESC')->get();
+        // $news = News::where('status', 1)->where('noi_bac', 1)->orderBy('id', 'DESC')->get();
         $partner = Photo::where('type','partner')->where('status',1)->get();
         $standard = Standard::where('status', 1)->orderBy('stt', 'ASC')->get();
-        $pageGT = DB::table('pages')->where('slug','gioi-thieu')->first();
+        $pageGT = PageTranslation::join('pages','pages.id','=','page_translations.page_id')->where('page_translations.locale',$locale)->where('pages.slug','gioi-thieu')->first();
         $category = Category::where('status', 1)->orderBy('stt', 'ASC')->get();
-        
+        $recruit = RecruitTranslation::join('recruits','recruits.id','=','recruit_translations.recruit_id')->where('recruit_translations.locale',$locale)
+        ->where('recruits.status', 1)->where('recruits.noi_bac', 1)->orderBy('recruits.id', 'DESC')->first();
         // $cate_product = Products::select('products.id','products.name','products.price','products.view','products.photo','categories.name AS category_name')
         // ->join('categories', 'categories.id','=','products.category_id')
         // ->where('categories.id',$category_noibac[0]['id'])->where('products.type',0)->where('products.status',1)->orderBy('categories.stt', 'ASC')->paginate($settings['PHAN_TRANG_PRODUCT']);
-        return view('site.home.index', compact('review','partner','video','slider','settings', 'image', 'pageGT', 'standard', 'news','service'));
+        return view('site.home.index', compact('recruit','partner','video','slider','settings', 'image', 'pageGT', 'standard', 'service'));
     }
 
     public function showMap(Request $request)

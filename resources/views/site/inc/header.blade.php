@@ -37,7 +37,7 @@
 		            </div>
                     <div class="ngonngu">
 			            <a href="/lang/vi"><img src="{{asset('public/site/images/vietnam.png')}}" alt="Tiếng Việt"></a>
-			            <a href="lang/en"><img src="{{asset('public/site/images/anh.png')}}" alt="Tiếng Anh"></a>
+			            <a href="/lang/en"><img src="{{asset('public/site/images/anh.png')}}" alt="Tiếng Anh"></a>
 		             </div>
 	            </div>
                 
@@ -101,7 +101,7 @@
                         <button style="    border-radius: 9px; padding: 3px;" class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> -->
                     
                         <div id="search">
-                            <input type="text" name="keyword" id="keyword" class="form-control mr-sm-2 search-input" type="search" placeholder="Nhập từ khóa tìm kiếm..." aria-label="Search">
+                            <input type="text" name="keyword" id="keyword" class="form-control mr-sm-2 search-input" type="search" placeholder="{{__('lang.search')}}..." aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true" ></i></button>
                         </div>
                     </form>

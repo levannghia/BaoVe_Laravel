@@ -15,7 +15,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
 @section('content')
     <div class="main-content-contacts">
         <div class="container">
-        <div class="tieude_giua"><div>TIN TỨC</div><span></span></div>
+        <div class="tieude_giua"><div>{{__('lang.news')}}</div><span></span></div>
             <div class="main-content-wrapper">
                 <div class="clears"></div>
                 <div id="main-content" class="row">

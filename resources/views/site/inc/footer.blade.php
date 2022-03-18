@@ -69,7 +69,7 @@
     <div class="container">
         <div class="copy-right">
             <div class="wapper">
-                <div class="cop-l">© Copyright 2017 company name, All rights reserved, Design by Nina</div>
+                <div class="cop-l">© Copyright 2017 company name, All rights reserved, Design by SotaGroup</div>
                 <div id="lienket">
                     @foreach ($social_footer as $item)
                     <a href="{{$item->link}}" target="_blank"><img src="{{asset('public/upload/images/photo/thumb/'.$item->photo)}}" alt="{{$item->title}}"></a>

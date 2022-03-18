@@ -30,7 +30,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                                                 <img src="public/upload/images/news/thumb/{{ $item->photo }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 ">
+                                        <div class="col-md-6 " style="padding-right: 0px;">
                                             <div class="text-news">
                                                 <a href="/tin-tuc/{{$item->slug}}">
                                                     <h4 class="title-news title_tintuc">

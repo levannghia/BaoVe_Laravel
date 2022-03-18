@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\ConfigController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\SeoPageController;
+use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\YKienKHControlle;
 use App\Http\Controllers\site\HomeController;
 use App\Http\Controllers\site\NewsSiteController;
@@ -26,6 +27,8 @@ use App\Http\Controllers\site\VideoSiteController;
 use App\Http\Controllers\site\CartController;
 use App\Http\Controllers\site\LocationController;
 use App\Http\Controllers\site\OrderSiteController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +45,16 @@ use App\Http\Controllers\site\OrderSiteController;
 // Route::get('/public', function () {
 //     return abort(404);
 // });
+Route::get('/lang/{locale}', function ($locale) {
+    if (! in_array($locale, ['en', 'vi'])) {
+        abort(400);
+    }
+ 
+    App::setLocale($locale);
+ 
+    Session::put('locale',$locale);
+    return redirect()->back();
+});
 Route::get("/", [HomeController::class, "index"])->name('home');
 Route::get("/site-map", [HomeController::class, "siteMap"]);
 Route::get("/category-lv1-show-products/{id}", [HomeController::class, "showProductInCategoryLV1"]);
@@ -182,7 +195,7 @@ Route::prefix('admin')->group(function () {
         });
 
         //Dịch Vụ
-        Route::name('admin.service.')->prefix('service')->controller(NewsController::class)->group(function () {
+        Route::name('admin.service.')->prefix('service')->controller(ServiceController::class)->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/add', 'create')->name('add');
             Route::post('/store', 'store')->name('store');

@@ -29,13 +29,13 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @if (isset($news))
-                                            @foreach ($news as $item)
+                                        @if (isset($service))
+                                            @foreach ($service as $item)
                                                 <tr>
                                                     <th><input type="checkbox" name="check[]" value="{{ $item->id }}" />
                                                     </th>
                                                     <td>{{ $i++ }}</td>
-                                                    <td><img src="{{asset('public/upload/images/news/thumb/'.$item->photo)}}"
+                                                    <td><img src="{{asset('public/upload/images/service/thumb/'.$item->photo)}}"
                                                             class="img-fluid" alt=""></td>
                                                     <td><a href="{{ route('admin.service.edit', $item->id) }}"
                                                             title="Chỉnh sửa {{ $item->title }}">{{ $item->title }}</a>
@@ -102,7 +102,7 @@
                                     onclick="javascript:checkDelBoxes($(this).closest('form').get(0), 'check[]', false);return false;"><i
                                         class="fe-x"></i> Hủy bỏ</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" delete-all="true" url="/admin/news/delete-all"
+                                <a class="dropdown-item text-danger" delete-all="true" url="/admin/service/delete-all"
                                     href="#"><i class="fe-trash-2"></i> Xóa</a>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                 var _token = "{{ csrf_token() }}";
                 if (check == true) {
                     $.ajax({
-                        url: "/admin/news/noi-bac/" + id_nb + "/" + 1,
+                        url: "/admin/service/noi-bac/" + id_nb + "/" + 1,
                         type: "GET",
                         data: {
                             id: id_nb,
@@ -135,7 +135,7 @@
                     });
                 } else {
                     $.ajax({
-                        url: "/admin/news/noi-bac/" + id_nb + "/" + 0,
+                        url: "/admin/service/noi-bac/" + id_nb + "/" + 0,
                         type: "GET",
                         data: {
                             id: id_nb,
@@ -160,7 +160,7 @@
                 var _token = "{{ csrf_token() }}";
                 if (check == true) {
                     $.ajax({
-                        url: "/admin/news/status/" + id_status + "/" + 1,
+                        url: "/admin/service/status/" + id_status + "/" + 1,
                         type: "GET",
                         data: {
                             id: id_status,
@@ -176,7 +176,7 @@
                     });
                 } else {
                     $.ajax({
-                        url: "/admin/news/status/" + id_status + "/" + 0,
+                        url: "/admin/service/status/" + id_status + "/" + 0,
                         type: "GET",
                         data: {
                             id: id_status,
@@ -207,7 +207,7 @@
                                 icon: "success",
                             });
                             $.ajax({
-                                url: "/admin/news/delete/" + id,
+                                url: "/admin/service/delete/" + id,
                                 type: "GET",
                                 data: {
                                     id: id

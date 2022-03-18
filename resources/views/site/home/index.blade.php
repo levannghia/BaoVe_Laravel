@@ -28,6 +28,21 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 <a class="xt" href="/gioi-thieu">Xem thêm</a>
             </div>
             
+            <div class="service-blocks">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($service as $key => $item)
+                        <div class="item">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ asset('public/upload/images/service/thumb/' . $item->photo) }}" alt="{{$item->title}}">
+                                <div class="card-body">
+                                  <p class="card-title" style="text-transform: uppercase;"><a href="">{{$item->title}}</a></p>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                              </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
             <h2 class="product-new">MUA BÁN NHÀ ĐẤT </h2>
             <p class="sk-fml">Chuyên mua bán nhà đất và kí gữi tại Sài Gòn</p>
             <p style="text-align: center; margin-top: 0;"><img src="{{ asset('public/site/images/border-xoan.jpg') }}"
@@ -274,7 +289,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             }
         });
 
-        $('.pr .owl-carousel').owlCarousel({
+        $('.service-blocks .owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
             nav: false,
@@ -288,7 +303,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                     items: 3
                 },
                 1000: {
-                    items: 5
+                    items: 4
                 }
             }
         });

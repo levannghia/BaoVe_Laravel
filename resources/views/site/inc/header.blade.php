@@ -56,15 +56,15 @@
                                 PHẨM</a>
                         </li> --}}
                         <li class="nav-item bg-ani">
-                            <a class="nav-link " href="/">TRANG CHỦ</a>
+                            <a class="nav-link " href="/">{{__('lang.home')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link " href="/gioi-thieu">GIỚI THIỆU</a>
+                            <a class="nav-link " href="/gioi-thieu">{{__('lang.about')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link" href="{{ route('get.product') }}">SẢN PHẨM</a>
+                            <a class="nav-link" href="{{ route('get.product') }}">{{__('lang.service')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
@@ -72,7 +72,7 @@
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link" href="{{ route('get.news') }}">TIN TỨC</a>
+                            <a class="nav-link" href="{{ route('get.news') }}">{{__('lang.news')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
@@ -80,7 +80,7 @@
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link " href="/lien-he">LIÊN HỆ</a>
+                            <a class="nav-link " href="/lien-he">{{__('lang.contacts')}}</a>
                         </li>
                         <li class="line"></li>
                     </ul>

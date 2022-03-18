@@ -335,6 +335,10 @@ div#navbarNav ul li.line {
     font-size: 23px;
 }
 
+.service-blocks {
+    text-align: center;
+}
+
 .tell-people {
     font-size: 12px;
     color: #28a745;
@@ -357,6 +361,7 @@ a:hover {
     z-index: 9999;
     left: 0px;
     width: 100%;
+    text-transform: uppercase;
 }
 
 .menu-header a {

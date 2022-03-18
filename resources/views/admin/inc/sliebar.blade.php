@@ -24,7 +24,7 @@
         </li> --}}
         
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.order.index')}}">
+            <a class="nav-link" href="{{route('admin.service.index')}}">
                 <i class="mdi mdi-layers menu-icon"></i>
                 <span class="menu-title">Dịch vụ</span>
             </a>

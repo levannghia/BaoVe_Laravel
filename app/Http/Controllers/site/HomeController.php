@@ -13,14 +13,15 @@ use App\Models\Standard;
 use App\Models\News;
 use App\Models\Photo;
 use App\Models\Review;
+use App\Models\ServiceTranslation;
 use App\Models\Video;
 use File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Cart;
 use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
@@ -45,12 +46,14 @@ class HomeController extends Controller
             "width" => 110,
             "height" => 110,
         ]));
-
+        $locale = Session::get('locale');
+        $service = ServiceTranslation::join('services','services.id','=','service_translations.service_id')->where('service_translations.locale',$locale)
+        ->where('services.status', 1)->where('services.noi_bac', 1)->orderBy('services.id', 'DESC')->get();
         $review = Review::where('status',1)->where('noi_bac',1)->get();
         $slider = Photo::where('status',1)->where('type','slide')->orderBy('stt','ASC')->get();
         $video = Video::where('status',1)->where('noi_bac',1)->orderBy('id','DESC')->limit(3)->get();
         $news = News::where('status', 1)->where('noi_bac', 1)->orderBy('id', 'DESC')->get();
-        $service = Service::where('status', 1)->where('noi_bac', 1)->orderBy('id', 'DESC')->get();
+        
         $standard = Standard::where('status', 1)->orderBy('stt', 'ASC')->get();
         $pageGT = DB::table('pages')->where('slug','gioi-thieu')->first();
         $category = Category::where('status', 1)->orderBy('stt', 'ASC')->get();

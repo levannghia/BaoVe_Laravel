@@ -17,6 +17,7 @@
             loop: true,
             margin: 10,
             nav: false,
+            dots:false,
             // animateOut: 'slideOutDown',
             animateOut: 'fadeOut',
             // animateIn: 'flipInX',

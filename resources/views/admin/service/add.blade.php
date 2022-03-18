@@ -4,7 +4,8 @@
 
     <div class="content-wrapper">
         @include('admin.inc.message')
-        <form class="forms-sample" method="POST" action="{{ route('admin.service.store') }}" enctype="multipart/form-data">
+        <form class="forms-sample" method="POST" action="{{ route('admin.service.store') }}"
+            enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-7 grid-margin stretch-card">
                     <div class="card">
@@ -14,18 +15,20 @@
                             @csrf
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tiếng Việt</a>
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                        aria-controls="home" aria-selected="true">Tiếng Việt</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tiếng Anh</a>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                        aria-controls="profile" aria-selected="false">Tiếng Anh</a>
                                 </li>
-                              </ul>
-                              <div class="tab-content" id="myTabContent">
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="form-group">
                                         <label for="slug">Tiêu đề</label>
-                                        <input type="text" class="form-control" value="{{ old('title:vi') }}" id="slug" name="title:vi"
-                                            placeholder="* Tiêu đề" onkeyup="changeToString()">
+                                        <input type="text" class="form-control" value="{{ old('title:vi') }}" id="slug"
+                                            name="title:vi" placeholder="* Tiêu đề" onkeyup="changeToString()">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Mô tả</label>
@@ -34,17 +37,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
-                                        <textarea class="form-control" id="content" rows="4"
-                                            name="content:vi">{{ old('content:vi') }}</textarea>
+                                        <textarea class="form-control" id="content" rows="4" name="content:vi">{{ old('content:vi') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="form-group">
                                         <label for="slug">Tiêu đề</label>
-                                        <input type="text" class="form-control" value="{{ old('title:en') }}" name="title:en"
-                                            placeholder="* Tiêu đề">
+                                        <input type="text" class="form-control" value="{{ old('title:en') }}"
+                                            name="title:en" placeholder="* Tiêu đề">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Mô tả</label>
                                         <textarea class="form-control" id="exampleTextarea1" rows="4"
@@ -52,11 +54,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="content">Nội dung</label>
-                                        <textarea class="form-control" id="content1" rows="4"
-                                            name="content:en">{{ old('content:en') }}</textarea>
+                                        <textarea class="form-control" id="content1" rows="4" name="content:en">{{ old('content:en') }}</textarea>
                                     </div>
                                 </div>
-                              </div>
+                            </div>
                             <div class="form-group">
                                 <label for="convert_slug">Slug (seo)</label>
                                 <input type="text" class="form-control" id="convert_slug" name="slug"
@@ -64,8 +65,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">Keywords (seo)</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"
-                                    name="keywords">{{ old('keywords') }}</textarea>
+                                <textarea class="form-control" id="exampleTextarea1" rows="4" name="keywords">{{ old('keywords') }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">Hiển thị</label>

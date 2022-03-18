@@ -91,6 +91,10 @@ div#navbarNav ul li.line {
     color: #000;
 }
 
+.card {
+    background-color: #eee !important;
+}
+
 .pr {
     padding: 10px 0;
     text-align: center;

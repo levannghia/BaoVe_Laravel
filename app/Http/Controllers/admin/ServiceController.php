@@ -131,14 +131,16 @@ class ServiceController extends Controller
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
-        $service = Service::find($id);
-        
+        $service_vi = Service::join('service_translations','service_translations.service_id','=','services.id')
+        ->where('service_translations.service_id',$id)->where('service_translations.locale','vi')->first();
+        $service_en = Service::join('service_translations','service_translations.service_id','=','services.id')
+        ->where('service_translations.service_id',$id)->where('service_translations.locale','en')->first();
         $row = json_decode(json_encode([
             "title" => "Update service",
-            "desc" => "Chỉnh sửa dịch vụ: " . $service->title
+            "desc" => "Chỉnh sửa dịch vụ: " . $service_vi->title
         ]));
 
-        return view("admin.service.edit",compact('service','row', 'settings'));
+        return view("admin.service.edit",compact('service_vi','service_en','row', 'settings'));
     }
 
     /**
@@ -150,36 +152,38 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
         $service = Service::find($id);
         $request->validate([
-            'title' => 'required|unique:news,title,'.$service->id.'|max:255',
             'slug' => 'required|unique:news,slug,'.$service->id.'|max:255',
-            'description' => 'required',
-            'content' => 'required',
             'status' => 'required',
             'photo' => 'mimes:jpg,png,jpeg,gif'
         ],[
-                "title.required" => "Vui lòng nhập tiêu đề",
-                "title.unique" => "Sản phẩm đã tồn tại",
-                "title.max" => "Tên sản phẩm không quá 255 ký tự",
                 "slug.required" => "Vui lòng nhập slug",
                 "slug.unique" => "Slug đã tồn tại",
                 "slug.max" => "Slug không quá 255 ký tự",
                 "status.required" => "Vui lòng chọn trạng thái",
-                "description.required" => "Vui lòng nhập mô tả",
-                "content.required" => "Vui lòng nhập nội dung",
                 "photo.mimes" => "Chọn đúng đinh dạng hình ảnh: jpg, png, jpeg, gif"
         ]);
        
-        $service->title = $request->title;
         $service->status = $request->status;
-        $service->description = $request->description;
-        $service->content = $request->content;
         $service->keywords = $request->keywords;
         $service->slug = $request->slug;
+        $service->fill([
+            'en' => [
+                'title' => $data['title:en'],
+                'description' => $data['description:en'],
+                'content' => $data['content:en'],
+            ],
+            'vi' => [
+                'title' => $data['title:vi'],
+                'description' => $data['description:vi'],
+                'content' => $data['content:vi'],
+            ],
+        ]);
         
         if ($request->hasFile('photo')) {
             $file = $request->photo;

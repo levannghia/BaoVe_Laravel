@@ -35,8 +35,8 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img-top" src="{{ asset('public/upload/images/service/thumb/' . $item->photo) }}" alt="{{$item->title}}">
                                 <div class="card-body">
-                                  <p class="card-title" style="text-transform: uppercase;"><a href="">{{$item->title}}</a></p>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <p class="card-title" style="text-transform: uppercase;"><a href="#">{{$item->title}}</a></p>
+                                  <p class="card-text">{{$item->description}}</p>
                                 </div>
                               </div>
                         </div>
@@ -291,6 +291,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
 
         $('.service-blocks .owl-carousel').owlCarousel({
             loop: true,
+            dots:false,
             margin: 10,
             nav: false,
             autoplay: false,

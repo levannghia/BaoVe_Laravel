@@ -24,17 +24,29 @@
     <div class="header-content">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-nav">
-                <a class="navbar-brand logo-img" href="/"><img
-                        src="{{ asset('public/upload/images/photo/thumb/' . $logo->photo) }}" alt=""></a>
+                <div class="banner_image"><a class="navbar-brand logo-img" href="/"><img src="/public/site/images/banner-bao-ve.png" alt=""></a></div>
                 
                 <div class="collapse navbar-collapse phone-contact" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav ml-auto">
+                <div class="hot_head">
+		            <div class="hot_head1">
+		            	<p>0973991122 - 0932228937</p>
+		            	<p>(0251) 3993033</p>
+		            </div>
+		            <div class="em_head">
+		            	<p>nhatkhanhphatbv@gmail.com</p>
+		            </div>
+                    <div class="ngonngu">
+			            <a href="#"><img src="/public/site/images/vietnam.png" alt="Tiếng Việt"></a>
+			            <a href="#"><img src="/public/site/images/anh.png" alt="Tiếng Anh"></a>
+		             </div>
+	            </div>
+                
+                    <!-- <ul class="navbar-nav ml-auto">
                         <a href="tel:0776768999" class="dt">
                             <span>{{ $settings['HOTLINE'] }} <p class="tell-people">(CSKH)
                                 </p></span>
                             <span>{{ $settings['PHONE'] }} <p class="tell-people">(BS. HUNG)</p></span></a>
-                    </ul>
+                    </ul> -->
                 </div>
             </nav>
         </div>

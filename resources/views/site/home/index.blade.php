@@ -106,7 +106,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
 
         </div>
     </div>
-    <div class="banner-criteria">
+    <!-- <div class="banner-criteria">
         <div class="container">
             <h2 class="distance">TIÊU CHÍ SỰ LỰA CHỌN</h2>
             <div class="row criteria-blocks">
@@ -149,6 +149,42 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                     @endforeach
                 </div>
 
+            </div>
+        </div>
+    </div> -->
+
+    <div class="banner-criteria">
+        <div class="container">
+            <h2 class="distance">TIÊU CHÍ SỰ LỰA CHỌN</h2>
+            <p class="discription">Dịch vụ bảo vệ chuyên nghiệp nhất với đội ngũ nhân viên được đào tạo và cấp chứng chỉ nghiệp vụ bảo vệ. Chính sách đào tạo và giữ nhân viên gắn bó với công ty giúp chúng tôi có lực lượng bảo vệ chuyên nghiệp nhất</p>
+            <div class="row criteria-blocks">
+                    <div class="col-md-4 criteria-option col-6 img-flucol-6">
+                        <div class="hinh_chonct">
+					        <a href="#" ><img src="/public/site/images/imgtc1.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+					    </div>
+                        <div class="wrapper">
+                            <h4 class="third after">Chính Sách Phát Triển</h4>
+                        </div>
+                        <p class="standard-content">Từ nhiều năm nay, chúng tôi vẫn tiếp tục nghiên cứu, phát triển và ứng dụng những cãi tiến mới để mang đến</p>
+                    </div>
+                    <div class="col-md-4 criteria-option col-6 img-flucol-6">
+                        <div class="hinh_chonct">
+					        <a href="#" ><img src="/public/site/images/imgtc2.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+					    </div>
+                        <div class="wrapper">
+                            <h4 class="third after">Chính Sách Phát Triển</h4>
+                        </div>
+                        <p class="standard-content">Từ nhiều năm nay, chúng tôi vẫn tiếp tục nghiên cứu, phát triển và ứng dụng những cãi tiến mới để mang đến</p>
+                    </div>
+                    <div class="col-md-4 criteria-option col-6 img-flucol-6">
+                        <div class="hinh_chonct">
+					        <a href="#" ><img src="/public/site/images/imgtc3.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+					    </div>
+                        <div class="wrapper">
+                            <h4 class="third after">Chính Sách Phát Triển</h4>
+                        </div>
+                        <p class="standard-content">Từ nhiều năm nay, chúng tôi vẫn tiếp tục nghiên cứu, phát triển và ứng dụng những cãi tiến mới để mang đến</p>
+                    </div>
             </div>
         </div>
     </div>

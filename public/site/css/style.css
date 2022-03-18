@@ -1023,24 +1023,29 @@ h4:active {
 
 .distance {
     padding-top: 40px;
+    position: relative;
+    font-weight: bold;
+    padding-bottom: 13px;
 }
 
 .banner-criteria {
     margin-top: 60px;
-    background-image: url(/public/site/images/bg.png);
-    background-repeat: no-repeat;
+    /* background-image: url(/public/site/images/bg.png); */
+    /* background-repeat: no-repeat; */
     width: 100%;
     position: relative;
 }
-
+.wrapper h4{
+    color: #007c42;
+}
 .banner-criteria h2 {
-    color: white;
+    color: #007c42;
     text-align: center;
 }
 
 .criteria-option {
     text-align: center;
-    color: white;
+    color: #000;
     max-width: 100% !important;
 }
 
@@ -1050,6 +1055,7 @@ h4:active {
 
 .criteria-blocks {
     padding: 40px;
+    padding-top: 20px;
 }
 
 .pic-video:before {
@@ -1323,10 +1329,14 @@ blockquote .name-customer:before {
 }
 
 footer {
-    padding: 30px 0;
-    background-image: url(/public/site/images/bg-footer.png);
+    padding: 40px 0;
+    background-image: url(/public/site/images/ft_bg.png);
+    margin: auto;
+    color: #fff;
+    background-size: 100% 100%;
+    margin-top: -10px;
 }
-
+.footer-item h4{font-weight: bold; color: #FFFF00 !important;}
 .footer-item a,
 .footer-item h4,
 .footer-item p {

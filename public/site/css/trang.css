@@ -312,3 +312,32 @@ div.tieude_giua {
     width: 100%;
     height: 440px;
 }
+div#search input {
+    padding: 0px 10px;
+    float: left;
+    border: none;
+    background: #fff;
+    width: 200px;
+    font-style: italic;
+}
+div#search button {
+    float: right;
+    margin-right: 5px;
+    margin-top: 5px;
+    color: #777676;
+    font-size: 17px;
+}
+div#search {
+    background: #fff;
+    border-radius: 6px;
+    float: right;
+    margin-left: 40px;
+}
+.btn-outline-success{
+    border-color: #fff;
+    padding: 0 !important;
+}
+.btn-outline-success:hover{
+    background-color: #fff;
+    border-color: #fff;
+}

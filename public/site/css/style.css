@@ -368,7 +368,7 @@ div#navbarNav ul li.line {
     text-align: right;
 }
 
-.form-search .btn-outline-success {
+/* .form-search .btn-outline-success {
     margin-left: -5px !important;
     border-radius: 0px;
     padding: 0.55rem 0.75rem;
@@ -376,7 +376,7 @@ div#navbarNav ul li.line {
     border-bottom-right-radius: 20px;
     background: #006600;
     color: white;
-}
+} */
 
 .dt {
     display: block;

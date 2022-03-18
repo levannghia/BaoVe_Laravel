@@ -71,7 +71,56 @@ div#navbarNav ul li.line {
     width: 2px;
 }
 
-.clear {
+.doitac-tintuc {
+    padding: 40px 0 55px 0;
+}
+
+.box-tintuc-ct-mt1 {
+    color: #fff;
+    padding: 30px;
+}
+
+.mota-tintuc-mt {
+    font-size: 14px;
+}
+
+.box-tintuc-ct-mt1 a {
+    display: block;
+    float: right;
+    color: #ffc30c !important;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.box-tintuc-ten-mt1 {
+    text-align: center;
+    font-family: 'RobotoRegular';
+    text-transform: uppercase;
+    font-size: 17px;
+    padding-bottom: 20px;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.box-tintuc-ct-mt img {
+    width: 100%;
+}
+
+.box-tintuc-ct-mt {
+    height: 425px;
+    background: #007c42;
+    margin-top: 30px;
+}
+
+.box-tintuc-head-mt {
+    color: #007c42;
+    font-size: 30px;
+    border-bottom: #c2c2c2 1px solid;
+    padding-bottom: 7px;
+    font-weight: bold;
+}
+
+.clears {
     padding-bottom: 20px;
     ;
 }

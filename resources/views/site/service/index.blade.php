@@ -19,7 +19,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                 <div>Dịch vụ</div><span></span>
             </div>
             <div class="main-content-wrapper">
-                <div class="clear"></div>
+                <div class="clears"></div>
 
                 <div id="main-content" class="row">
                     {{-- <div class="col-md-6"> --}}

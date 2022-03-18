@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Config;
 use App\Models\SeoPage;
+use App\Models\NewsTranslation;
+use Illuminate\Support\Facades\Session;
 
 class NewsSiteController extends Controller
 {
@@ -43,7 +45,9 @@ class NewsSiteController extends Controller
         $image = json_decode(
             $seoPage->options
         );
-        $news = DB::table('news')->where('status', 1)->paginate($settings['PHAN_TRANG_BAI_VIET']);
+        $locale = Session::get('locale');
+        $news = NewsTranslation::join('news','news.id','=','news_translations.news_id')->where('news_translations.locale',$locale)
+        ->where('news.status', 1)->orderBy('news.id', 'DESC')->paginate($settings['PHAN_TRANG_BAI_VIET']);
         return view('site.news.index', compact('news', 'settings', 'seoPage','image'));
     }
 }

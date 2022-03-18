@@ -8,6 +8,7 @@ use App\Models\Config;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\NewsTranslation;
 
 class NewsController extends Controller
 {
@@ -51,37 +52,42 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
+
         $request->validate([
-            'title' => 'required|unique:news,title|max:255',
             'slug' => 'required|unique:news,slug|max:255',
-            'description' => 'required',
-            'content' => 'required',
             'status' => 'required',
             'photo' => 'required|mimes:jpg,png,jpeg,gif'
         ],[
-                "title.required" => "Vui lòng nhập tiêu đề",
-                "title.unique" => "Sản phẩm đã tồn tại",
-                "title.max" => "Tên sản phẩm không quá 255 ký tự",
                 "slug.required" => "Vui lòng nhập slug",
                 "slug.unique" => "Slug đã tồn tại",
                 "slug.max" => "Slug không quá 255 ký tự",
                 "status.required" => "Vui lòng chọn trạng thái",
-                "description.required" => "Vui lòng nhập mô tả",
-                "content.required" => "Vui lòng nhập nội dung",
                 "photo.required" => "Vui lòng thêm hình ảnh",
                 "photo.mimes" => "Chọn đúng đinh dạng hình ảnh: jpg, png, jpeg, gif"
         ]);
 
         $news = new News;
-        $news->title = $request->title;
-        $news->content = $request->content;
+
+        $news->fill([
+            'en' => [
+                'title' => $data['title:en'],
+                'description' => $data['description:en'],
+                'content' => $data['content:en'],
+            ],
+            'vi' => [
+                'title' => $data['title:vi'],
+                'description' => $data['description:vi'],
+                'content' => $data['content:vi'],
+            ],
+        ]);
         $news->noi_bac = 0;
         $news->keywords = $request->keywords;
         $news->status = $request->status;
-        $news->description = $request->description;
         $news->slug = $request->slug;
         if ($request->hasFile('photo')) {
             $file = $request->photo;
@@ -125,14 +131,19 @@ class NewsController extends Controller
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
-        $news = News::find($id);
+
+        $news_vi = News::join('news_translations','news_translations.news_id','=','news.id')
+        ->where('news_translations.news_id',$id)->where('news_translations.locale','vi')->first();
+
+        $news_en = News::join('news_translations','news_translations.news_id','=','news.id')
+        ->where('news_translations.news_id',$id)->where('news_translations.locale','en')->first();
         
         $row = json_decode(json_encode([
             "title" => "Update news",
-            "desc" => "Chỉnh sửa tin tức: " . $news->title
+            "desc" => "Chỉnh sửa tin tức"
         ]));
 
-        return view("admin.news.edit",compact('news','row', 'settings'));
+        return view("admin.news.edit",compact('news_vi','news_en','row', 'settings'));
     }
 
     /**
@@ -144,34 +155,37 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
         $news = News::find($id);
         $request->validate([
-            'title' => 'required|unique:news,title,'.$news->id.'|max:255',
             'slug' => 'required|unique:news,slug,'.$news->id.'|max:255',
-            'description' => 'required',
-            'content' => 'required',
             'status' => 'required',
             'photo' => 'mimes:jpg,png,jpeg,gif'
         ],[
-                "title.required" => "Vui lòng nhập tiêu đề",
-                "title.unique" => "Sản phẩm đã tồn tại",
-                "title.max" => "Tên sản phẩm không quá 255 ký tự",
                 "slug.required" => "Vui lòng nhập slug",
                 "slug.unique" => "Slug đã tồn tại",
                 "slug.max" => "Slug không quá 255 ký tự",
                 "status.required" => "Vui lòng chọn trạng thái",
-                "description.required" => "Vui lòng nhập mô tả",
-                "content.required" => "Vui lòng nhập nội dung",
                 "photo.mimes" => "Chọn đúng đinh dạng hình ảnh: jpg, png, jpeg, gif"
         ]);
        
-        $news->title = $request->title;
+        $news->fill([
+            'en' => [
+                'title' => $data['title:en'],
+                'description' => $data['description:en'],
+                'content' => $data['content:en'],
+            ],
+            'vi' => [
+                'title' => $data['title:vi'],
+                'description' => $data['description:vi'],
+                'content' => $data['content:vi'],
+            ],
+        ]);
+
         $news->status = $request->status;
-        $news->description = $request->description;
-        $news->content = $request->content;
         $news->keywords = $request->keywords;
         $news->slug = $request->slug;
         

@@ -29,9 +29,10 @@ class ServiceSiteController extends Controller
         $locale = Session::get('locale');
         $service = ServiceTranslation::join('services','services.id','=','service_translations.service_id')->where('service_translations.locale',$locale)
         ->where('services.status', 1)->where('services.slug',$slug)->first();
-        // $service_lq = DB::table('services')->where('status', 1)->where('id','!=',$service->id)->limit(3)->get();
+        $service_lq = DB::table('service_translations')->join('services','services.id','=','service_translations.service_id')->where('service_translations.locale',$locale)
+        ->where('services.status', 1)->where('services.id','!=',$service->service_id)->paginate(6);
         if(isset($service)){
-            return view('site.service.service_detail',compact('service','image'));
+            return view('site.service.service_detail',compact('service','image','service_lq'));
         }
         return abort(404);
     }

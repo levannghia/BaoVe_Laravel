@@ -19,7 +19,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/service/t
                 <div>{{$service->title}}</div><span></span>
             </div>
             <div class="main-content-wrapper">
-                <div class="clear"></div>
+                <div class="clears"></div>
                 <div id="main-content" class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {!! $service->content !!}
@@ -33,7 +33,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/service/t
                         data-color="blue" data-customize="false"></div>
                 </div>
                 <div class="clear" style="padding-bottom: 20px;"></div>
-                {{-- <div class="news-lien-quan">
+                <div class="news-lien-quan">
                     <p style="font-style: italic; font-weight: bold; margin-bottom: 0px;">Bài viết khác:</p>
                     <ul>
                         @foreach ($service_lq as $item)
@@ -42,11 +42,12 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/service/t
                             $date = new DateTime($item->created_at);
                         
                             ?>
-                            <li><a href="/tin-tuc/{{ $item->slug }}" title="{{ $item->title }}">{{ $item->title }}</a>
+                            <li><a href="/dich-vu/{{ $item->slug }}" title="{{ $item->title }}">{{ $item->title }}</a>
                                 - {{ $date->format('d/m/Y'); }}</li>
                         @endforeach
                     </ul>
-                </div> --}}
+                    {{$service_lq->links()}}
+                </div>
 
             </div>
         </div>

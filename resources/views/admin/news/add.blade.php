@@ -12,10 +12,50 @@
                             <h4 class="card-title">{{ $row->desc }}</h4>
                             @include('admin.inc.error')
                             @csrf
-                            <div class="form-group">
-                                <label for="slug">Tiêu đề</label>
-                                <input type="text" class="form-control" value="{{ old('title') }}" id="slug" name="title"
-                                    placeholder="* Tiêu đề" onkeyup="changeToString()">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                        aria-controls="home" aria-selected="true">Tiếng Việt</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                        aria-controls="profile" aria-selected="false">Tiếng Anh</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="form-group">
+                                        <label for="slug">Tiêu đề</label>
+                                        <input type="text" class="form-control" value="{{ old('title:vi') }}" id="slug"
+                                            name="title:vi" placeholder="* Tiêu đề" onkeyup="changeToString()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Mô tả</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4"
+                                            name="description:vi">{{ old('description:vi') }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="content">Nội dung</label>
+                                        <textarea class="form-control" id="content" rows="4" name="content:vi">{{ old('content:vi') }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="form-group">
+                                        <label for="slug">Tiêu đề</label>
+                                        <input type="text" class="form-control" value="{{ old('title:en') }}"
+                                            name="title:en" placeholder="* Tiêu đề">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Mô tả</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4"
+                                            name="description:en">{{ old('description:en') }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="content">Nội dung</label>
+                                        <textarea class="form-control" id="content1" rows="4" name="content:en">{{ old('content:en') }}</textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="convert_slug">Slug (seo)</label>
@@ -24,18 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">Keywords (seo)</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"
-                                    name="keywords">{{ old('keywords') }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleTextarea1">Mô tả</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"
-                                    name="description">{{ old('description') }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="content">Nội dung</label>
-                                <textarea class="form-control" id="content" rows="4"
-                                    name="content">{{ old('content') }}</textarea>
+                                <textarea class="form-control" id="exampleTextarea1" rows="4" name="keywords">{{ old('keywords') }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">Hiển thị</label>
@@ -89,6 +118,13 @@
             }
         }
         CKEDITOR.replace('content', {
+            filebrowserBrowseUrl: '/public/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: '/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserWindowWidth: '1000',
+            filebrowserWindowHeight: '700'
+        });
+
+        CKEDITOR.replace('content1', {
             filebrowserBrowseUrl: '/public/ckfinder/ckfinder.html',
             filebrowserUploadUrl: '/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
             filebrowserWindowWidth: '1000',

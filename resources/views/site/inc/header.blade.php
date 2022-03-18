@@ -24,7 +24,7 @@
     <div class="header-content">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-nav">
-                <div class="banner_image"><a class="navbar-brand logo-img" href="/"><img src="/public/site/images/banner-bao-ve.png" alt=""></a></div>
+                <div class="banner_image"><a class="navbar-brand logo-img" href="/"><img src="{{asset('public/site/images/banner-bao-ve.png')}}" alt=""></a></div>
                 
                 <div class="collapse navbar-collapse phone-contact" id="navbarSupportedContent">
                 <div class="hot_head">
@@ -36,8 +36,8 @@
 		            	<p>nhatkhanhphatbv@gmail.com</p>
 		            </div>
                     <div class="ngonngu">
-			            <a href="#"><img src="/public/site/images/vietnam.png" alt="Tiếng Việt"></a>
-			            <a href="#"><img src="/public/site/images/anh.png" alt="Tiếng Anh"></a>
+			            <a href="/lang/vi"><img src="{{asset('public/site/images/vietnam.png')}}" alt="Tiếng Việt"></a>
+			            <a href="lang/en"><img src="{{asset('public/site/images/anh.png')}}" alt="Tiếng Anh"></a>
 		             </div>
 	            </div>
                 

@@ -184,6 +184,7 @@ ul.navbar-nav.ml-auto {
     padding-left: 27px;
     padding-bottom: 5px;
 }
+
 .em_head {
     background: url(../images/mail.png) no-repeat left center;
     font-family: 'Arial';
@@ -191,10 +192,12 @@ ul.navbar-nav.ml-auto {
     color: #686868;
     padding-left: 25px;
 }
-.banner_image{
+
+.banner_image {
     width: 79%;
 }
-.hot_head1 p{
+
+.hot_head1 p {
     margin-bottom: 0;
 }
 
@@ -207,20 +210,23 @@ ul.navbar-nav.ml-auto {
     justify-content: center;
     margin: 0 auto;
 }
+
 .wrapper h4 {
     font-weight: bold;
     text-decoration: none;
     color: #007c42;
     font-family: 'fonta';
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
     display: block;
     padding: 10px 0;
 }
+
 .standard-content {
     font-family: 'RobotoRegular';
     font-size: 15px;
 }
+
 .distance:after {
     position: absolute;
     content: '';
@@ -230,21 +236,25 @@ ul.navbar-nav.ml-auto {
     left: calc(50% - 35px);
     bottom: 0;
 }
-.discription{
+
+.discription {
     text-align: center;
     padding: 0 70px;
     padding-top: 15px;
 }
+
 div.copy-right {
     /* background: #0051ab; */
     border-top: 1px rgba(255, 255, 255, 0.41) solid;
     line-height: 40px;
 }
+
 div.wapper {
     margin: auto;
     max-width: 1210px;
     padding: 0px 5px;
 }
+
 div.copy-right .cop-l {
     /* height: 40px; */
     line-height: 10px;
@@ -254,6 +264,7 @@ div.copy-right .cop-l {
     float: left;
     margin-top: 18px;
 }
+
 div#lienket {
     /* margin-top: 10px; */
     /* padding-top: 10px; */
@@ -263,6 +274,7 @@ div#lienket {
     margin-left: 80px;
     float: left;
 }
+
 div.copy-right .cop-r {
     /* height: 40px; */
     /* line-height: 40px; */
@@ -272,6 +284,7 @@ div.copy-right .cop-r {
     width: 350px;
     float: right;
 }
+
 div.tieude_giua {
     color: #fff;
     padding-left: 20px;

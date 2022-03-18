@@ -48,7 +48,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             <p style="text-align: center; margin-top: 0;"><img src="{{ asset('public/site/images/border-xoan.jpg') }}"
                     alt="">
             </p>
-            <div class="row">
+            {{-- <div class="row">
                 @foreach ($nhaDat as $item)
                     <div class="col-lg-3 col-md-6 real-estate">
                         <div class="cover">
@@ -102,7 +102,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
 
         </div>
     </div>

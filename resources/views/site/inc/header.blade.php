@@ -76,7 +76,7 @@
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link" href="{{ route('get.product') }}">{{__('lang.service')}}</a>
+                            <a class="nav-link" href="{{ route('get.service') }}">{{__('lang.service')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">

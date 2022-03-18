@@ -27,6 +27,7 @@ use App\Http\Controllers\site\VideoSiteController;
 use App\Http\Controllers\site\CartController;
 use App\Http\Controllers\site\LocationController;
 use App\Http\Controllers\site\OrderSiteController;
+use App\Http\Controllers\site\ServiceSiteController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
@@ -73,6 +74,11 @@ Route::get("/danh-muc/{slug}", [ProductSiteController::class, "productCategory"]
 //News
 Route::get("/tin-tuc/{slug}", [NewsSiteController::class, "getNewsBySlug"])->name('get.news.slug');
 Route::get("/tin-tuc", [NewsSiteController::class, "getAllNews"])->name('get.news');
+
+//service
+Route::get("/dich-vu/{slug}", [ServiceSiteController::class, "getServiceBySlug"])->name('get.service.slug');
+Route::get("/dich-vu", [ServiceSiteController::class, "getAllService"])->name('get.service');
+
 //page
 Route::get("/lien-he", [PageSiteController::class, "getPageLienHe"])->name('get.page.lien.he');
 Route::post("/post-lien-he", [PageSiteController::class, "postLienHe"])->name('post.page.lien.he');

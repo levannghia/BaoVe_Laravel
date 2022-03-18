@@ -58,11 +58,10 @@ class HomeController extends Controller
         $pageGT = DB::table('pages')->where('slug','gioi-thieu')->first();
         $category = Category::where('status', 1)->orderBy('stt', 'ASC')->get();
         
-        $nhaDat = Products::where('status', 1)->where('noi_bac', 1)->orderBy('id', 'DESC')->where('type', 1)->limit(8)->get();
         // $cate_product = Products::select('products.id','products.name','products.price','products.view','products.photo','categories.name AS category_name')
         // ->join('categories', 'categories.id','=','products.category_id')
         // ->where('categories.id',$category_noibac[0]['id'])->where('products.type',0)->where('products.status',1)->orderBy('categories.stt', 'ASC')->paginate($settings['PHAN_TRANG_PRODUCT']);
-        return view('site.home.index', compact('review','video','slider','settings', 'image', 'pageGT', 'standard', 'news','service', 'nhaDat'));
+        return view('site.home.index', compact('review','video','slider','settings', 'image', 'pageGT', 'standard', 'news','service'));
     }
 
     public function showMap(Request $request)

@@ -137,7 +137,7 @@ class ServiceController extends Controller
         ->where('service_translations.service_id',$id)->where('service_translations.locale','en')->first();
         $row = json_decode(json_encode([
             "title" => "Update service",
-            "desc" => "Chỉnh sửa dịch vụ: " . $service_vi->title
+            "desc" => "Chỉnh sửa dịch vụ"
         ]));
 
         return view("admin.service.edit",compact('service_vi','service_en','row', 'settings'));

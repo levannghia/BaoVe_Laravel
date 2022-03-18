@@ -726,6 +726,20 @@ h4:active {
     .contact-block {
         display: none;
     }
+    footer{
+        height: 970px;
+    }
+    div#lienket{
+        margin-left: 0px !important;
+    }
+    div.copy-right .cop-l{
+        line-height: 22px !important;
+        width: 100% !important;
+    }
+    div.copy-right .cop-r{
+        width:100% !important;
+        text-align: left !important;
+    }
 }
 
 @media (min-width: 992px) {
@@ -797,6 +811,7 @@ h4:active {
         padding-left: 15px !important;
         margin-bottom: 10px;
     }
+   
 }
 
 @media (max-width: 960px) {
@@ -809,6 +824,7 @@ h4:active {
     .price-view {
         display: block !important;
     }
+    .div.copy-right .cop-l{display: none !important;}
 }
 
 @media (min-width: 1140px) {

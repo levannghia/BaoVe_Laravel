@@ -26,10 +26,12 @@ class ServiceSiteController extends Controller
             "width" => 600,
             "height" => 400,
         ]));
-        $service = DB::table('services')->where('status', 1)->where('slug', $slug)->first();
+        $locale = Session::get('locale');
+        $service = ServiceTranslation::join('services','services.id','=','service_translations.service_id')->where('service_translations.locale',$locale)
+        ->where('services.status', 1)->where('services.slug',$slug)->first();
         // $service_lq = DB::table('services')->where('status', 1)->where('id','!=',$service->id)->limit(3)->get();
-        if(isset($news)){
-            return view('site.service.service_detail',compact('service','image','service_lq'));
+        if(isset($service)){
+            return view('site.service.service_detail',compact('service','image'));
         }
         return abort(404);
     }

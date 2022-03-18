@@ -15,13 +15,17 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
 @section('content')
     <div class="main-content-contacts">
         <div class="container">
-        <div class="tieude_giua"><div>Dịch vụ</div><span></span></div>
+            <div class="tieude_giua">
+                <div>Dịch vụ</div><span></span>
+            </div>
             <div class="main-content-wrapper">
+                <div class="clear"></div>
+
                 <div id="main-content" class="row">
                     {{-- <div class="col-md-6"> --}}
                     @foreach ($service as $item)
                         <div class="col-md-6">
-                            <a class="main-content-a" href="/dich-vu/{{$item->slug}}">
+                            <a class="main-content-a" href="/dich-vu/{{ $item->slug }}">
                                 <div class="border-content-tintuc">
                                     <div class="row">
                                         <div class="col-md-6 content_image">
@@ -31,7 +35,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                                         </div>
                                         <div class="col-md-6 ">
                                             <div class="text-news">
-                                                <a href="/tin-tuc/{{$item->slug}}">
+                                                <a href="/dich-vu/{{ $item->slug }}">
                                                     <h4 class="title-news title_tintuc">
                                                         {{ $item->title }}
                                                     </h4>

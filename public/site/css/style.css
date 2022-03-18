@@ -71,6 +71,11 @@ div#navbarNav ul li.line {
     width: 2px;
 }
 
+.clear {
+    padding-bottom: 20px;
+    ;
+}
+
 .follow-us {
     color: #686868;
     font-size: 13px;
@@ -726,18 +731,18 @@ h4:active {
     .contact-block {
         display: none;
     }
-    footer{
+    footer {
         height: 970px;
     }
-    div#lienket{
+    div#lienket {
         margin-left: 0px !important;
     }
-    div.copy-right .cop-l{
+    div.copy-right .cop-l {
         line-height: 22px !important;
         width: 100% !important;
     }
-    div.copy-right .cop-r{
-        width:100% !important;
+    div.copy-right .cop-r {
+        width: 100% !important;
         text-align: left !important;
     }
 }
@@ -811,7 +816,6 @@ h4:active {
         padding-left: 15px !important;
         margin-bottom: 10px;
     }
-   
 }
 
 @media (max-width: 960px) {
@@ -824,7 +828,9 @@ h4:active {
     .price-view {
         display: block !important;
     }
-    .div.copy-right .cop-l{display: none !important;}
+    .div.copy-right .cop-l {
+        display: none !important;
+    }
 }
 
 @media (min-width: 1140px) {
@@ -1051,9 +1057,11 @@ h4:active {
     width: 100%;
     position: relative;
 }
-.wrapper h4{
+
+.wrapper h4 {
     color: #007c42;
 }
+
 .banner-criteria h2 {
     color: #007c42;
     text-align: center;
@@ -1352,7 +1360,12 @@ footer {
     background-size: 100% 100%;
     margin-top: -10px;
 }
-.footer-item h4{font-weight: bold; color: #FFFF00 !important;}
+
+.footer-item h4 {
+    font-weight: bold;
+    color: #FFFF00 !important;
+}
+
 .footer-item a,
 .footer-item h4,
 .footer-item p {

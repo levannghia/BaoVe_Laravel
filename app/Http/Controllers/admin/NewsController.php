@@ -9,6 +9,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\NewsTranslation;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -133,10 +134,10 @@ class NewsController extends Controller
             return $setting->value; // return only the value
         })->toArray();
 
-        $news_vi = News::join('news_translations','news_translations.news_id','=','news.id')
+        $news_vi = DB::table('news')->join('news_translations','news_translations.news_id','=','news.id')
         ->where('news_translations.news_id',$id)->where('news_translations.locale','vi')->first();
-        //dd($news_vi);
-        $news_en = News::join('news_translations','news_translations.news_id','=','news.id')
+        // dd($news_vi['news_id']);
+        $news_en = DB::table('news')->join('news_translations','news_translations.news_id','=','news.id')
         ->where('news_translations.news_id',$id)->where('news_translations.locale','en')->first();
         
         $row = json_decode(json_encode([

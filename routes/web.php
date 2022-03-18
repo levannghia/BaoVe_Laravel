@@ -53,7 +53,6 @@ Route::get('/lang/{locale}', function ($locale) {
     }
  
     App::setLocale($locale);
- 
     Session::put('locale',$locale);
     return redirect()->back();
 });
@@ -62,7 +61,6 @@ Route::get("/site-map", [HomeController::class, "siteMap"]);
 Route::get("/category-lv1-show-products/{id}", [HomeController::class, "showProductInCategoryLV1"]);
 Route::post("/show-map", [HomeController::class, "showMap"])->name('show.map');
 Route::post("/hover-category-lv-1", [HomeController::class, "hoverCategoryLV1"])->name('hover.category');
-// Route::get("/site", [HomeController::class, "siteMap"])->name('site.map');
 Route::get("/home", [HomeController::class, "getProductByCategory"])->name('show.product.category');
 Route::get("/search", [HomeController::class, "Search"])->name('search.product');
 

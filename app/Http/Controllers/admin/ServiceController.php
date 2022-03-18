@@ -9,6 +9,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\ServiceTranslation;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -131,9 +132,9 @@ class ServiceController extends Controller
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
-        $service_vi = Service::join('service_translations','service_translations.service_id','=','services.id')
+        $service_vi = DB::table('services')->join('service_translations','service_translations.service_id','=','services.id')
         ->where('service_translations.service_id',$id)->where('service_translations.locale','vi')->first();
-        $service_en = Service::join('service_translations','service_translations.service_id','=','services.id')
+        $service_en = DB::table('services')->join('service_translations','service_translations.service_id','=','services.id')
         ->where('service_translations.service_id',$id)->where('service_translations.locale','en')->first();
         $row = json_decode(json_encode([
             "title" => "Update service",

@@ -31,8 +31,6 @@
                                         <input type="text" class="form-control"
                                             value="{{ old('title:vi', $news_vi->title) }}" id="slug" name="title:vi"
                                             placeholder="* Tiêu đề" onkeyup="changeToString()">
-
-                                            {{$news_vi->news_id}}
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Mô tả</label>
@@ -51,7 +49,6 @@
                                         <input type="text" class="form-control"
                                             value="{{ old('title:en', $news_en->title) }}" name="title:en"
                                             placeholder="* Tiêu đề">
-                                            {{$news_en->news_id}}
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Mô tả</label>

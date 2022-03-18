@@ -9,6 +9,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\RecruitTranslation;
+use Illuminate\Support\Facades\DB;
 
 class RecruitController extends Controller
 {
@@ -132,10 +133,10 @@ class RecruitController extends Controller
             return $setting->value; // return only the value
         })->toArray();
 
-        $recruit_vi = Recruit::join('recruit_translations','recruit_translations.recruit_id','=','recruits.id')
+        $recruit_vi = DB::table('recruits')->join('recruit_translations','recruit_translations.recruit_id','=','recruits.id')
         ->where('recruit_translations.recruit_id',$id)->where('recruit_translations.locale','vi')->first();
 
-        $recruit_en = Recruit::join('recruit_translations','recruit_translations.recruit_id','=','recruits.id')
+        $recruit_en = DB::table('recruits')->join('recruit_translations','recruit_translations.recruit_id','=','recruits.id')
         ->where('recruit_translations.recruit_id',$id)->where('recruit_translations.locale','en')->first();
  
         $row = json_decode(json_encode([

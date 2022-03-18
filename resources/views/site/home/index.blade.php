@@ -140,7 +140,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                     </div>
                 </div>
             </div>
-            <div class="news-events">
+            {{-- <div class="news-events">
                 <div class="row">
                     <div class="col-md-6">
                         <h2 class="news-events-title">TIN TỨC & SỰ KIỆN</h2>
@@ -190,10 +190,9 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
-        {{-- data-target="#exampleModalCenter" data-toggle="modal" --}}
 
         <!-- Modal -->
         <div class="modal fade" id="modal_map" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -296,110 +295,110 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 }
             });
 
-            $(document).ready(function() {
+            // $(document).ready(function() {
 
-                loadCate1();
-                loadCate2()
+            //     loadCate1();
+            //     loadCate2()
 
-                function loadCate1() {
-                    let id = $("[id1-cate-lv1]").attr("id1-cate-lv1")
-                    var show_product = $("#chemistry-a");
+            //     function loadCate1() {
+            //         let id = $("[id1-cate-lv1]").attr("id1-cate-lv1")
+            //         var show_product = $("#chemistry-a");
 
-                    $.ajax({
-                        method: "GET",
-                        url: "/category-lv1-show-products/" + id,
-                        data: {
-                            id: id
-                        },
-                        success: function(data) {
-                            show_product.html(data);
-                        }
-                    });
-                }
+            //         $.ajax({
+            //             method: "GET",
+            //             url: "/category-lv1-show-products/" + id,
+            //             data: {
+            //                 id: id
+            //             },
+            //             success: function(data) {
+            //                 show_product.html(data);
+            //             }
+            //         });
+            //     }
 
-                function loadCate2() {
-                    let id = $("[id2-cate-lv1]").attr("id2-cate-lv1");
-                    var show_product = $("#medical-equipment-b");
+            //     function loadCate2() {
+            //         let id = $("[id2-cate-lv1]").attr("id2-cate-lv1");
+            //         var show_product = $("#medical-equipment-b");
 
-                    $.ajax({
-                        method: "GET",
-                        url: "/category-lv1-show-products/" + id,
-                        data: {
+            //         $.ajax({
+            //             method: "GET",
+            //             url: "/category-lv1-show-products/" + id,
+            //             data: {
 
-                            id: id
-                        },
-                        success: function(data) {
-                            show_product.html(data);
-                        }
-                    });
-                }
+            //                 id: id
+            //             },
+            //             success: function(data) {
+            //                 show_product.html(data);
+            //             }
+            //         });
+            //     }
 
-                $("[category-id]").click(function() {
-                    let id = $(this).attr('category-id');
-                    var show_product = $("#chemistry-" + id);
-                    //console.log(id);
-                    //let _token = $('meta[name="csrf-token"]').attr('content');
+            //     $("[category-id]").click(function() {
+            //         let id = $(this).attr('category-id');
+            //         var show_product = $("#chemistry-" + id);
+            //         //console.log(id);
+            //         //let _token = $('meta[name="csrf-token"]').attr('content');
 
-                    $.ajax({
-                        method: "GET",
-                        url: "{{ route('show.product.category') }}",
-                        data: {
+            //         $.ajax({
+            //             method: "GET",
+            //             url: "{{ route('show.product.category') }}",
+            //             data: {
 
-                            id: id
-                        },
-                        success: function(data) {
-                            show_product.html(data);
-                        }
-                    });
-                });
+            //                 id: id
+            //             },
+            //             success: function(data) {
+            //                 show_product.html(data);
+            //             }
+            //         });
+            //     });
 
-                $("[category-id]").click(function() {
-                    let id = $(this).attr('category-id');
-                    var show_product = $("#medical-equipment-" + id);
-                    //console.log(id);
-                    //let _token = $('meta[name="csrf-token"]').attr('content');
+            //     $("[category-id]").click(function() {
+            //         let id = $(this).attr('category-id');
+            //         var show_product = $("#medical-equipment-" + id);
+            //         //console.log(id);
+            //         //let _token = $('meta[name="csrf-token"]').attr('content');
 
-                    $.ajax({
-                        method: "GET",
-                        url: "{{ route('show.product.category') }}",
-                        data: {
+            //         $.ajax({
+            //             method: "GET",
+            //             url: "{{ route('show.product.category') }}",
+            //             data: {
 
-                            id: id
-                        },
-                        success: function(data) {
-                            show_product.html(data);
-                        }
-                    });
-                });
+            //                 id: id
+            //             },
+            //             success: function(data) {
+            //                 show_product.html(data);
+            //             }
+            //         });
+            //     });
 
-                $("[data-id]").click(function() {
-                    $('#modal_map').modal('show');
-                    let id = $(this).attr('data-id');
-                    let _token = $('meta[name="csrf-token"]').attr('content');
-                    $(document).on('click', '.modal-close', function() {
-                        $('#my_modal').modal('hide');
-                    })
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('show.map') }}",
-                        data: {
-                            _token: _token,
-                            id: id
-                        },
-                        success: function(data) {
-                            if (data.status) {
-                                //console.log(data);
-                                if (data.data.map != null) {
-                                    $('.modal-body').html(data.data.map);
-                                } else {
-                                    $('.modal-body').html("Đang cập nhật");
-                                }
-                            } else {
-                                $('.modal-body').html("Đang cập nhật");
-                            }
-                        }
-                    });
-                });
-            })
+            //     $("[data-id]").click(function() {
+            //         $('#modal_map').modal('show');
+            //         let id = $(this).attr('data-id');
+            //         let _token = $('meta[name="csrf-token"]').attr('content');
+            //         $(document).on('click', '.modal-close', function() {
+            //             $('#my_modal').modal('hide');
+            //         })
+            //         $.ajax({
+            //             method: "POST",
+            //             url: "{{ route('show.map') }}",
+            //             data: {
+            //                 _token: _token,
+            //                 id: id
+            //             },
+            //             success: function(data) {
+            //                 if (data.status) {
+            //                     //console.log(data);
+            //                     if (data.data.map != null) {
+            //                         $('.modal-body').html(data.data.map);
+            //                     } else {
+            //                         $('.modal-body').html("Đang cập nhật");
+            //                     }
+            //                 } else {
+            //                     $('.modal-body').html("Đang cập nhật");
+            //                 }
+            //             }
+            //         });
+            //     });
+            // })
         </script>
     @endpush

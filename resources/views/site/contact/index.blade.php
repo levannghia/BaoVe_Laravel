@@ -16,7 +16,8 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] .'/public/upload/images/seoPage/th
     <div class="main-content-contacts">
         <div class="container">
             <div class="main-content-wrapper">
-                <h2 class="product-new">{{$page->title}}</h2>
+                <div class="tieude_giua"><div>{{$page->title}}</div><span></span></div>
+                <div class="clears"></div>
                 
                 <div id="main-content" class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 lienhe">

@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\ConfigController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\RecruitController;
 use App\Http\Controllers\admin\SeoPageController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\YKienKHControlle;
@@ -64,12 +65,13 @@ Route::post("/hover-category-lv-1", [HomeController::class, "hoverCategoryLV1"])
 // Route::get("/site", [HomeController::class, "siteMap"])->name('site.map');
 Route::get("/home", [HomeController::class, "getProductByCategory"])->name('show.product.category');
 Route::get("/search", [HomeController::class, "Search"])->name('search.product');
+
 //Product
-Route::get("/san-pham/{slug}", [ProductSiteController::class, "getProductBySlug"])->name('get.product.slug');
-Route::get("/san-pham", [ProductSiteController::class, "getAllProduct"])->name('get.product');
-Route::get("/mua-ban-nha-dat/{slug}", [ProductSiteController::class, "getNhaDatBySlug"])->name('get.nha.dat.slug');
-Route::get("/mua-ban-nha-dat", [ProductSiteController::class, "getAllNhaDat"])->name('get.nha.dat');
-Route::get("/danh-muc/{slug}", [ProductSiteController::class, "productCategory"])->name('get.product.category.slug');
+// Route::get("/san-pham/{slug}", [ProductSiteController::class, "getProductBySlug"])->name('get.product.slug');
+// Route::get("/san-pham", [ProductSiteController::class, "getAllProduct"])->name('get.product');
+// Route::get("/mua-ban-nha-dat/{slug}", [ProductSiteController::class, "getNhaDatBySlug"])->name('get.nha.dat.slug');
+// Route::get("/mua-ban-nha-dat", [ProductSiteController::class, "getAllNhaDat"])->name('get.nha.dat');
+// Route::get("/danh-muc/{slug}", [ProductSiteController::class, "productCategory"])->name('get.product.category.slug');
 
 //News
 Route::get("/tin-tuc/{slug}", [NewsSiteController::class, "getNewsBySlug"])->name('get.news.slug');
@@ -83,20 +85,22 @@ Route::get("/dich-vu", [ServiceSiteController::class, "getAllService"])->name('g
 Route::get("/lien-he", [PageSiteController::class, "getPageLienHe"])->name('get.page.lien.he');
 Route::post("/post-lien-he", [PageSiteController::class, "postLienHe"])->name('post.page.lien.he');
 Route::get("/gioi-thieu", [PageSiteController::class, "getPageGioiThieu"])->name('get.page.gioi.thieu');
+
 //video
 Route::get("/video", [VideoSiteController::class, "getAllVideo"])->name('get.video');
+
 //Cart
-Route::post("/cart", [CartController::class, "saveCart"])->name('save.cart');
-Route::get("/cart", [CartController::class, "getCart"]);
-Route::get("/delete-cart/{rowId}", [CartController::class, "deleteCart"]);
-Route::post("/update-cart", [CartController::class, "updateCart"])->name('update.cart');
+// Route::post("/cart", [CartController::class, "saveCart"])->name('save.cart');
+// Route::get("/cart", [CartController::class, "getCart"]);
+// Route::get("/delete-cart/{rowId}", [CartController::class, "deleteCart"]);
+// Route::post("/update-cart", [CartController::class, "updateCart"])->name('update.cart');
 
 //location
 Route::get("/quan-huyen", [LocationController::class, "loadQuanHuyen"]);
 Route::get("/phuong-xa", [LocationController::class, "loadPhuongXa"]);
 
 //order
-Route::post("/order/check-out", [OrderSiteController::class, "checkOut"])->name('check.out');
+// Route::post("/order/check-out", [OrderSiteController::class, "checkOut"])->name('check.out');
 
 //ADMIN
 
@@ -213,6 +217,19 @@ Route::prefix('admin')->group(function () {
             Route::get('/status/{id}/{status}', 'status')->name('status');
         });
 
+        //Tuyển dụng
+        Route::name('admin.recruit.')->prefix('tuyen-dung')->controller(RecruitController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/add', 'create')->name('add');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/update/{id}', 'update')->name('update');
+            Route::get('/delete/{id}', 'destroy')->name('delete');
+            Route::get('/delete-all/{id}', 'deleteAll')->name('delete.all');
+            Route::get('/noi-bac/{id}/{noiBac}', 'noiBac')->name('noi.bac');
+            Route::get('/status/{id}/{status}', 'status')->name('status');
+        });
+
         //Video
         Route::name('admin.video.')->prefix('video')->controller(VideoController::class)->group(function () {
             Route::get('/', 'index')->name('index');
@@ -304,17 +321,17 @@ Route::prefix('admin')->group(function () {
             Route::post('/resorting', 'resortPosition')->name('resorting');
         });
 
-        //Ý kiến khách hàng
-        Route::name('admin.y.kien.')->prefix('y-kien-khach-hang')->controller(YKienKHControlle::class)->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/add', 'create')->name('add');
-            Route::post('/store', 'store')->name('store');
-            Route::get('/edit/{id}', 'edit')->name('edit');
-            Route::post('/update/{id}', 'update')->name('update');
-            Route::get('/delete/{id}', 'destroy')->name('delete');
-            Route::get('/delete-all/{id}', 'deleteAll')->name('delete.all');
-            Route::get('/noi-bac/{id}/{noiBac}', 'noiBac')->name('noi.bac');
-            Route::get('/status/{id}/{status}', 'status')->name('status');
-        });
+        // //Ý kiến khách hàng
+        // Route::name('admin.y.kien.')->prefix('y-kien-khach-hang')->controller(YKienKHControlle::class)->group(function () {
+        //     Route::get('/', 'index')->name('index');
+        //     Route::get('/add', 'create')->name('add');
+        //     Route::post('/store', 'store')->name('store');
+        //     Route::get('/edit/{id}', 'edit')->name('edit');
+        //     Route::post('/update/{id}', 'update')->name('update');
+        //     Route::get('/delete/{id}', 'destroy')->name('delete');
+        //     Route::get('/delete-all/{id}', 'deleteAll')->name('delete.all');
+        //     Route::get('/noi-bac/{id}/{noiBac}', 'noiBac')->name('noi.bac');
+        //     Route::get('/status/{id}/{status}', 'status')->name('status');
+        // });
     });
 });

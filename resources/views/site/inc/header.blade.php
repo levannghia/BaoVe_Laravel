@@ -29,11 +29,11 @@
                 <div class="collapse navbar-collapse phone-contact" id="navbarSupportedContent">
                 <div class="hot_head">
 		            <div class="hot_head1">
-		            	<p>0973991122 - 0932228937</p>
-		            	<p>(0251) 3993033</p>
+		            	<p>{{$settings['PHONE'] .' - ' .$settings['HOTLINE']}}</p>
+		            	<p>{{$settings['DTBAN']}}</p>
 		            </div>
 		            <div class="em_head">
-		            	<p>nhatkhanhphatbv@gmail.com</p>
+		            	<p>{{$settings['EMAIL']}}</p>
 		            </div>
                     <div class="ngonngu">
 			            <a href="/lang/vi"><img src="{{asset('public/site/images/vietnam.png')}}" alt="Tiếng Việt"></a>
@@ -80,7 +80,7 @@
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link " href="{{ route('get.nha.dat') }}">MUA BÁN NHÀ ĐẤT</a>
+                            <a class="nav-link " href="">{{__('lang.album')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
@@ -88,7 +88,7 @@
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">
-                            <a class="nav-link" href="{{ route('get.video') }}">VIDEO</a>
+                            <a class="nav-link" href="{{ route('get.video') }}">{{__('lang.recruitment')}}</a>
                         </li>
                         <li class="line"></li>
                         <li class="nav-item bg-ani">

@@ -41,7 +41,7 @@
                     <li class="nav-item"> <a class="nav-link"
                             href="{{route('admin.news.index')}}">Tin tức</a></li>
                             <li class="nav-item"> <a class="nav-link"
-                                href="{{route('admin.y.kien.index')}}">Ý kiến khách hàng</a></li>
+                                href="{{route('admin.recruit.index')}}">Tuyển dụng</a></li>
                     <li class="nav-item"> <a class="nav-link"
                             href="{{route('admin.video.index')}}">Video</a></li>
                     <li class="nav-item"> <a class="nav-link"

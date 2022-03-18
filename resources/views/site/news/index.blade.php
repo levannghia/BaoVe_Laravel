@@ -15,6 +15,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
 @section('content')
     <div class="main-content-contacts">
         <div class="container">
+        <div class="tieude_giua"><div>Dịch vụ</div><span></span></div>
             <div class="main-content-wrapper">
                 <h2 class="product-new">TIN TỨC & SỰ KIỆN</h2>
                 <p style="text-align: center; margin-top: 0;"><img src="{{ asset('public/site/images/border-xoan.jpg') }}"

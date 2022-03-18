@@ -6,7 +6,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        
+
         {{-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
                 aria-controls="form-elements">
@@ -22,9 +22,9 @@
                 </ul>
             </div>
         </li> --}}
-        
+
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.service.index')}}">
+            <a class="nav-link" href="{{ route('admin.service.index') }}">
                 <i class="mdi mdi-layers menu-icon"></i>
                 <span class="menu-title">Dịch vụ</span>
             </a>
@@ -38,19 +38,19 @@
             </a>
             <div class="collapse" id="ui-advanced">
                 <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.news.index') }}">Tin
+                            tức</a></li>
                     <li class="nav-item"> <a class="nav-link"
-                            href="{{route('admin.news.index')}}">Tin tức</a></li>
-                            <li class="nav-item"> <a class="nav-link"
-                                href="{{route('admin.recruit.index')}}">Tuyển dụng</a></li>
+                            href="{{ route('admin.recruit.index') }}">Tuyển dụng</a></li>
                     <li class="nav-item"> <a class="nav-link"
-                            href="{{route('admin.video.index')}}">Video</a></li>
+                            href="{{ route('admin.video.index') }}">Video</a></li>
                     <li class="nav-item"> <a class="nav-link"
-                            href="{{route('admin.standard.index')}}">Tiêu chí</a></li>
+                            href="{{ route('admin.standard.index') }}">Tiêu chí</a></li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.order.index')}}">
+            <a class="nav-link" href="{{ route('admin.order.index') }}">
                 <i class="mdi mdi-bell menu-icon"></i>
                 <span class="menu-title">Quản lý đơn hàng</span>
             </a>
@@ -63,12 +63,15 @@
                 <i class="menu-arrow"></i>
             </a>
             @php
-                $page = DB::table('pages')->orderBy('id','DESC')->get();
+                $page = DB::table('pages')
+                    ->orderBy('id', 'DESC')
+                    ->get();
             @endphp
             <div class="collapse" id="charts">
                 <ul class="nav flex-column sub-menu">
                     @foreach ($page as $item)
-                    <li class="nav-item"> <a class="nav-link" href="/admin/page/{{$item->slug}}">{{$item->name}}</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="/admin/page/{{ $item->slug }}">{{ $item->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -82,12 +85,16 @@
             </a>
             <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.photo.logo')}}">Logo</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.photo.favicon')}}">Favicon</a></li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.photo.logo') }}">Logo</a></li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.photo.favicon') }}">Favicon</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/photo/slide">Slideshow</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/photo/partner">Đối tác</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/photo/social-top">Mạng xã hội top</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/photo/social-footer">Mạng xã hội footer</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/photo/social-top">Mạng xã hội
+                            top</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/photo/social-footer">Mạng xã hội
+                            footer</a></li>
                 </ul>
             </div>
         </li>
@@ -98,18 +105,21 @@
                 <i class="menu-arrow"></i>
             </a>
             @php
-                $seo_page = DB::table('seo_pages')->orderBy('id','DESC')->get();
+                $seo_page = DB::table('seo_pages')
+                    ->orderBy('id', 'DESC')
+                    ->get();
             @endphp
             <div class="collapse" id="icons">
                 <ul class="nav flex-column sub-menu">
                     @foreach ($seo_page as $item)
-                    <li class="nav-item"> <a class="nav-link" href="/admin/seo-page/{{$item->type}}">{{$item->name}}</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="/admin/seo-page/{{ $item->type }}">{{ $item->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.config.index')}}">
+            <a class="nav-link" href="{{ route('admin.config.index') }}">
                 <i class="fa fa-gears menu-icon"></i>
                 <span class="menu-title">Thiết lập thông tin</span>
             </a>

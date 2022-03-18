@@ -137,10 +137,10 @@ class RecruitController extends Controller
 
         $recruit_en = Recruit::join('recruit_translations','recruit_translations.recruit_id','=','recruits.id')
         ->where('recruit_translations.recruit_id',$id)->where('recruit_translations.locale','en')->first();
-        
+ 
         $row = json_decode(json_encode([
-            "title" => "Update news",
-            "desc" => "Chỉnh sửa tin tức"
+            "title" => "Update recruit",
+            "desc" => "Chỉnh sửa tin tuyển dụng"
         ]));
 
         return view("admin.recruit.edit",compact('recruit_vi','recruit_en','row', 'settings'));
@@ -159,9 +159,9 @@ class RecruitController extends Controller
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
-        $news = News::find($id);
+        $recruit = Recruit::find($id);
         $request->validate([
-            'slug' => 'required|unique:news,slug,'.$news->id.'|max:255',
+            'slug' => 'required|unique:recruits,slug,'.$recruit->id.'|max:255',
             'status' => 'required',
             'photo' => 'mimes:jpg,png,jpeg,gif'
         ],[
@@ -172,7 +172,7 @@ class RecruitController extends Controller
                 "photo.mimes" => "Chọn đúng đinh dạng hình ảnh: jpg, png, jpeg, gif"
         ]);
        
-        $news->fill([
+        $recruit->fill([
             'en' => [
                 'title' => $data['title:en'],
                 'description' => $data['description:en'],
@@ -185,13 +185,13 @@ class RecruitController extends Controller
             ],
         ]);
 
-        $news->status = $request->status;
-        $news->keywords = $request->keywords;
-        $news->slug = $request->slug;
+        $recruit->status = $request->status;
+        $recruit->keywords = $request->keywords;
+        $recruit->slug = $request->slug;
         
         if ($request->hasFile('photo')) {
             $file = $request->photo;
-            $pathDel = 'public/upload/images/news/thumb/'.$news->photo;
+            $pathDel = 'public/upload/images/recruit/thumb/'.$recruit->photo;
     
             if(file_exists($pathDel)){
                 unlink($pathDel);
@@ -202,16 +202,16 @@ class RecruitController extends Controller
             //resize file befor to upload large
             if ($file->getClientOriginalExtension() != "svg") {
                 $image_resize = Image::make($file->getRealPath());
-                $thumb_size = json_decode($settings["THUMB_SIZE_NEWS"]);
+                $thumb_size = json_decode($settings["THUMB_SIZE_RECRUIT"]);
                 $image_resize->fit($thumb_size->width,$thumb_size->height);
 
-                $image_resize->save('public/upload/images/news/thumb/' . $file_name);
+                $image_resize->save('public/upload/images/recruit/thumb/' . $file_name);
             }
 
             // $file->move("public/upload/images/admins/large", $file_name);
-            $news->photo = $file_name;
+            $recruit->photo = $file_name;
         }
-        if($news->save()){
+        if($recruit->save()){
             return redirect()->back()->with(["type"=>"success","message"=>"Cập nhật thành công"]);
         }else{
             return back()->withInput()->with(["type"=>"danger","message"=>"Cập nhật thất bại"]);
@@ -226,8 +226,8 @@ class RecruitController extends Controller
      */
     public function destroy($id)
     {
-        $data = News::find($id);
-        $pathDel = 'public/upload/images/news/thumb/'.$data->photo;
+        $data = Recruit::find($id);
+        $pathDel = 'public/upload/images/recruit/thumb/'.$data->photo;
         
         if($data->delete()){
             if(file_exists($pathDel)){
@@ -247,7 +247,7 @@ class RecruitController extends Controller
 
     public function noiBac($id,$noiBac)
     {
-        $data = News::find($id);
+        $data = Recruit::find($id);
         $data->noi_bac = $noiBac;
         if ($data->save()) {
             return response()->json([
@@ -264,7 +264,7 @@ class RecruitController extends Controller
 
     public function status($id,$status)
     {
-        $data = News::find($id);
+        $data = Recruit::find($id);
         $data->status = $status;
         if ($data->save()) {
             return response()->json([
@@ -287,26 +287,26 @@ class RecruitController extends Controller
             return back()->withInput()->with(["type" => "danger", "message" => "Không có dữ liệu để xóa."]);
         }
         if (count($list_id) == 1 && isset($list_id[0]->id)) {
-            $news = News::find($list_id[0]->id);
+            $news = Recruit::find($list_id[0]->id);
             if ($news->delete()) {
-                $pathDel = 'public/upload/images/news/thumb/'.$news->photo;
+                $pathDel = 'public/upload/images/recruit/thumb/'.$news->photo;
                 if(file_exists($pathDel)){
                     unlink($pathDel);
                 }
-                return redirect()->route("admin.news.index")->with(["type" => "success", "message" => "Xoá thành công!"]);
+                return redirect()->route("admin.recruit.index")->with(["type" => "success", "message" => "Xoá thành công!"]);
             } else {
                 return back()->withInput()->with(["type" => "danger", "message" => "Đã xảy ra lỗi, vui lòng thử lại."]);
             }
         } else {
             foreach ($list_id as $key => $value) {
-                $news = News::find($value->id);
+                $news = Recruit::find($value->id);
                 $news->delete();
-                $pathDel = 'public/upload/images/news/thumb/'.$news->photo;
+                $pathDel = 'public/upload/images/recruit/thumb/'.$news->photo;
                 if(file_exists($pathDel)){
                     unlink($pathDel);
                 }
             }
-            return redirect()->route("admin.news.index")->with(["type" => "success", "message" => "Xóa thành công!"]);
+            return redirect()->route("admin.recruit.index")->with(["type" => "success", "message" => "Xóa thành công!"]);
         }
     }
 }

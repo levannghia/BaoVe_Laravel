@@ -23,6 +23,7 @@
                                         aria-controls="profile" aria-selected="false">Tiếng Anh</a>
                                 </li>
                             </ul>
+
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="form-group">
@@ -30,6 +31,8 @@
                                         <input type="text" class="form-control"
                                             value="{{ old('title:vi', $news_vi->title) }}" id="slug" name="title:vi"
                                             placeholder="* Tiêu đề" onkeyup="changeToString()">
+
+                                            {{$news_vi->news_id}}
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Mô tả</label>
@@ -48,6 +51,7 @@
                                         <input type="text" class="form-control"
                                             value="{{ old('title:en', $news_en->title) }}" name="title:en"
                                             placeholder="* Tiêu đề">
+                                            {{$news_en->news_id}}
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Mô tả</label>

@@ -128,13 +128,14 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
+        
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
 
         $news_vi = News::join('news_translations','news_translations.news_id','=','news.id')
         ->where('news_translations.news_id',$id)->where('news_translations.locale','vi')->first();
-
+        //dd($news_vi);
         $news_en = News::join('news_translations','news_translations.news_id','=','news.id')
         ->where('news_translations.news_id',$id)->where('news_translations.locale','en')->first();
         

@@ -232,7 +232,7 @@ ul.navbar-nav.ml-auto {
     content: '';
     background: #007c42;
     width: 70px;
-    height: 2px;
+    height: 2.5px;
     left: calc(50% - 35px);
     bottom: 0;
 }
@@ -298,4 +298,17 @@ div.tieude_giua {
     position: relative;
     font-family: 'RobotoCondensedRegular';
     font-size: 18px;
+}
+.banner-imgall{
+    margin-top: 0px;
+    background: url(../images/bg_imgAll.png) top center no-repeat;
+    padding: 45px 0;
+    background-size: 100% 100%;
+}
+.banner-imgall h2{color: #fff;}
+.banner-imgall .distance:after{background: #fff;}
+.banner-imgall .distance{padding-top: 0;}
+#bando_footer iframe {
+    width: 100%;
+    height: 440px;
 }

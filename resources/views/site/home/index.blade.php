@@ -119,6 +119,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="video-clip">
                 <h2 class="product-new">Video Clip</h2>
@@ -192,7 +193,36 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                 </div>
             </div> --}}
         </div>
-
+        <div class="banner-criteria banner-imgall">
+            <div class="container">
+                <h2 class="distance">ALBUM HÌNH ẢNH</h2>
+                <div class="row" style="margin-top: 35px;">
+                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
+                        <div class="img_all">
+                            <a href="#" ><img class="eeee" src="/public/site/images/bv1.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
+                        <div class="img_all">
+                            <a href="#" ><img class="eeee" src="/public/site/images/bv2.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
+                        <div class="img_all">
+                            <a href="#" ><img class="eeee" src="/public/site/images/bv3.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
+                        <div class="img_all">
+                            <a href="#" ><img class="eeee" src="/public/site/images/bv4.png" alt="GIÁ CẢ CẠNH TRANH"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bando_footer">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d125391.10858599901!2d106.67603522594862!3d10.851648784291584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d10.756877399999999!2d106.6338518!4m3!3m2!1d10.950441999999999!2d106.875537!5e0!3m2!1svi!2s!4v1513755915827" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="modal_map" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

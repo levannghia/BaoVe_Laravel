@@ -31,7 +31,7 @@ class PageSiteController extends Controller
         $image = json_decode(
             $seoPage->options
         );
-        //dd($image);
+
         return view('site.contact.index', compact('page', 'settings', 'seoPage', 'image'));
     }
 
@@ -51,6 +51,7 @@ class PageSiteController extends Controller
         $image = json_decode(
             $seoPage->options
         );
+        
         //dd($image);
         return view('site.about.index', compact('page', 'settings', 'seoPage', 'image'));
     }
@@ -82,7 +83,7 @@ class PageSiteController extends Controller
 
         if (!$validator->passes()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
-        } else {
+        } elseif(session()->get('captchacode') == $request->captcha) {
             $value = [
                 'email' => $request->email,
                 'name' => $request->name,
@@ -100,6 +101,8 @@ class PageSiteController extends Controller
             if ($query) {
                 return response()->json(['status' => 1, 'msg' => 'Gui thanh cong']);
             }
+        }else{
+            return response()->json(['status' => 2, 'msg' => 'Captcha không chính xác vui lòng nhập lại!']);
         }
     }
 }

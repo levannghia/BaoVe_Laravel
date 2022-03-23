@@ -94,9 +94,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
         </div>
     </div>
 
-
     <div id="bando_footer">{!! $settings['MAP_IFRAME'] !!}</div>
-
 
 @endsection
 @push('script_site')
@@ -109,8 +107,8 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
             $("#btn_send").click(function() {
                 var _token = $('meta[name="csrf-token"]').attr('content');
                 var data_form = $("#form_contact").serialize();
-                var captcha_ss = "{{session()->get('captcha')}}";
-                alert(captcha_ss); 
+               
+                
                 $.ajax({
                     url: "{{ route('post.page.lien.he') }}",
                     type: "POST",
@@ -136,6 +134,8 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                                     location.reload();
                                 }
                             });
+                        }else if(data.status == 2){
+                            swal("Xãy ra lỗi!", "..."+ data.msg);
                         } else {
                             data.error.name != undefined ? $(".error_name").html(
                                 data.error.name).show() : "";

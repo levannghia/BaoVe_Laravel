@@ -67,7 +67,7 @@ class LocationController extends Controller
         $text = md5(time());
         $text = substr($text,0,5);
       
-        session()->put('captcha',$text);
+        session(['captcha' => $text]);
         
         imagettftext($jpg_image,35,10,65,60,$color_array[$key_color1],realpath($font_array[$key_font1]),$text[0]);
         imagettftext($jpg_image,35,19,110,60,$color_array[$key_color2],realpath($font_array[$key_font2]),$text[1]);

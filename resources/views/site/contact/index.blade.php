@@ -107,8 +107,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
             $("#btn_send").click(function() {
                 var _token = $('meta[name="csrf-token"]').attr('content');
                 var data_form = $("#form_contact").serialize();
-               
-                
+                              
                 $.ajax({
                     url: "{{ route('post.page.lien.he') }}",
                     type: "POST",

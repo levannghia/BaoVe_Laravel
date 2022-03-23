@@ -20,44 +20,51 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
             {{-- silder --}}
 
             <!-- content -->
-            <h2 class="product-new">KẾT QUẢ TÌM KIẾM: {{ $search }}</h2>
-            
-            </p>
-            <div class="row">
-                @if (count($data) > 0)
-                    @foreach ($data as $item)
-                        <div class="col-md-3">
-                            <div class="border-col">
-                                <div class="detail-product-link">
-                                    <a href="{{ route('get.product.slug', $item->slug) }}"><img
-                                            src="public/upload/images/product/thumb/{{ $item->photo }}" alt=""
-                                            width="200px"></a>
-                                </div>
-                                <a href="{{ route('get.product.slug', $item->slug) }}">
-                                    <h6 class="product-name">{{ $item->name }}</h6>
-                                </a>
-                                <div class="price-view">
-                                    @if ($item->price == null)
-                                        <p class="product-price">Giá: <a href="{{ $settings['PHONE'] }}"
-                                                class="contact-product">liên
-                                                hệ</a> </p>
-                                    @else
-                                        <p class="product-price">Giá: <a
-                                                href="{{ route('get.product.slug', $item->slug) }}"
-                                                class="contact-product">{{ number_format($item->price, 0, ',', '.') }}
-                                                đ</a>
-                                        </p>
-                                    @endif
-                                    <p class="product-views">Lượt xem: {{ $item->view }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <h5 style="margin: auto;" class="product-new mb-5">Sản phẩm không tồn tại!</h5>
-                @endif
+            <div class="tieude_giua">
+                <div>{{ __('lang.search') .': ' .$search }}</div><span></span>
             </div>
-            {{ $data->links() }}
+            <div class="main-content-wrapper">
+                <div class="clears"></div>
+
+                <div id="main-content" class="row">
+                    {{-- <div class="col-md-6"> --}}
+                    @if (count($data) > 0)
+                        @foreach ($data as $item)
+                            <div class="col-md-6">
+                                <a class="main-content-a" href="/dich-vu/{{ $item->slug }}">
+                                    <div class="border-content-tintuc">
+                                        <div class="row" style="margin-bottom: 20px;">
+                                            <div class="col-md-6 content_image">
+                                                <div class="img-news img-news-tintuc">
+                                                    <img src="public/upload/images/service/thumb/{{ $item->photo }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="text-news">
+                                                    <a href="/dich-vu/{{ $item->slug }}">
+                                                        <h4 class="title-news title_tintuc">
+                                                            {{ $item->title }}
+                                                        </h4>
+                                                    </a>
+                                                    <p class="des-news" maxlength="200">
+                                                        {{ $item->description }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    @endif
+                    {{-- </div> --}}
+
+                    
+                </div>
+                {{ $data->links() }}
+            </div>
+            
 
         </div>
     </div>

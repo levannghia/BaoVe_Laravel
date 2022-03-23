@@ -43,7 +43,7 @@
                     minlength: "Mật khẩu phải có ít nhất 6 ký tự"
                 },
                 confirm_password: {
-                    required: "Vui nhập lòng mật khẩu xác nhận",
+                    required: "Vui nhập lòng xác nhận mật khẩu ",
                     minlength: "Mật khẩu phải có ít nhất 6 ký tự",
                     equalTo: "Mật khẩu không chính xác"
                 },
@@ -100,7 +100,7 @@
                     minlength: "Mật khẩu phải có ít nhất 6 ký tự"
                 },
                 confirm_password: {
-                    required: "Vui nhập lòng mật khẩu xác nhận",
+                    required: "Vui nhập lòng xác nhận mật khẩu ",
                     minlength: "Mật khẩu phải có ít nhất 6 ký tự",
                     equalTo: "Mật khẩu không chính xác"
                 },

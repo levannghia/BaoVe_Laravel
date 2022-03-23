@@ -46,9 +46,14 @@
                                             name="hotline">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleTextarea1">Tọa độ google map:</label>
-                                        <textarea class="form-control" id="exampleTextarea1" rows="8"
-                                            name="toa_do_gg_map">{{ old('toa_do_gg_map',$settings['MAP_TOA_DO']) }}</textarea>
+                                        <label for="exampleTextarea1">Website:</label>
+                                        <input type="text" class="form-control" value="{{ old('website',$settings['WEBSITE']) }}"
+                                            name="website">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Điện thoại bàn:</label>
+                                        <input type="text" class="form-control" value="{{ old('phoneTable',$settings['DTBAN']) }}"
+                                            name="phoneTable">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -63,9 +68,9 @@
                                             name="phone">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleTextarea1">Website:</label>
-                                        <input type="text" class="form-control" value="{{ old('website',$settings['WEBSITE']) }}"
-                                            name="website">
+                                        <label for="exampleTextarea1">Link google map:</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="8"
+                                            name="toa_do_gg_map">{{ old('toa_do_gg_map',$settings['MAP_TOA_DO']) }}</textarea>
                                     </div>
                                     {{-- <div class="form-group">
                                         <label for="exampleTextarea1">Giới thiệu công ty:</label>
@@ -81,7 +86,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="slug">Tọa độ google map iframe: <span><a href="https://www.google.com/maps">(lấy
+                                <label for="slug">Google map iframe: <span><a target="_blank" href="https://www.google.com/maps">(lấy
                                             mã nhúng)</a></span></label>
                                 <textarea class="form-control" id="exampleTextarea1" rows="6"
                                     name="gg_map_iframe">{{ old('gg_map_iframe',$settings['MAP_IFRAME']) }}</textarea>
@@ -155,6 +160,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <a href="/admin" class="btn btn-light">Cancel</a>
         </form>
     </div>
 @endsection

@@ -21,7 +21,7 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                 <div id="main-content" class="row">
                     {{-- <div class="col-md-6"> --}}
                     @foreach ($news as $item)
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="margin-bottom: 20px;">
                             <a class="main-content-a" href="/tin-tuc/{{$item->slug}}">
                                 <div class="border-content-tintuc">
                                     <div class="row">
@@ -37,8 +37,12 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                                                         {{ $item->title }}
                                                     </h4>
                                                 </a>
-                                                <p class="des-news" maxlength="200">
-                                                    {{ $item->description }}
+                                                <p class="des-news" maxlength="200">  
+                                                    @if (strlen($item->description) > 201)
+                                                    {{ substr($item->description, 0, 201) . '...' }}
+                                                    @else
+                                                    {{$item->description}}
+                                                    @endif
                                                 </p>
                                             </div>
                                         </div>

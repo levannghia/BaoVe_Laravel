@@ -19,6 +19,7 @@ use App\Models\ServiceTranslation;
 use App\Models\PageTranslation;
 use App\Models\Video;
 use File;
+use App\Models\StandardTranslation;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -30,8 +31,7 @@ use Illuminate\Support\Facades\Artisan;
 class HomeController extends Controller
 {
     public function siteMap()
-    {
-        
+    {       
         Artisan::call('sitemap:create');
     }
     
@@ -54,18 +54,21 @@ class HomeController extends Controller
         ->where('services.status', 1)->where('services.noi_bac', 1)->orderBy('services.id', 'DESC')->get();
         $review = Review::where('status',1)->where('noi_bac',1)->get();
         $slider = Photo::where('status',1)->where('type','slide')->orderBy('stt','ASC')->get();
-        $video = Video::where('status',1)->where('noi_bac',1)->orderBy('id','DESC')->limit(3)->get();
+        $album = Photo::where('status',1)->where('type','album')->orderBy('stt','ASC')->get();
+        $bannerContent = Photo::where('status',1)->where('type','banner-content')->first();
+        // $video = Video::where('status',1)->where('noi_bac',1)->orderBy('id','DESC')->limit(3)->get();
         // $news = News::where('status', 1)->where('noi_bac', 1)->orderBy('id', 'DESC')->get();
         $partner = Photo::where('type','partner')->where('status',1)->get();
-        $standard = Standard::where('status', 1)->orderBy('stt', 'ASC')->get();
+        $standard = StandardTranslation::join('standards','standards.id','=','standard_translations.standard_id')->where('standard_translations.locale',$locale)
+        ->where('standards.status', 1)->where('standards.status', 1)->orderBy('standards.stt', 'ASC')->get();
         $pageGT = PageTranslation::join('pages','pages.id','=','page_translations.page_id')->where('page_translations.locale',$locale)->where('pages.slug','gioi-thieu')->first();
-        $category = Category::where('status', 1)->orderBy('stt', 'ASC')->get();
+        // $category = Category::where('status', 1)->orderBy('stt', 'ASC')->get();
         $recruit = RecruitTranslation::join('recruits','recruits.id','=','recruit_translations.recruit_id')->where('recruit_translations.locale',$locale)
         ->where('recruits.status', 1)->where('recruits.noi_bac', 1)->orderBy('recruits.id', 'DESC')->first();
         // $cate_product = Products::select('products.id','products.name','products.price','products.view','products.photo','categories.name AS category_name')
         // ->join('categories', 'categories.id','=','products.category_id')
         // ->where('categories.id',$category_noibac[0]['id'])->where('products.type',0)->where('products.status',1)->orderBy('categories.stt', 'ASC')->paginate($settings['PHAN_TRANG_PRODUCT']);
-        return view('site.home.index', compact('recruit','partner','video','slider','settings', 'image', 'pageGT', 'standard', 'service'));
+        return view('site.home.index', compact('bannerContent','album','recruit','partner','slider','settings', 'image', 'pageGT', 'standard', 'service'));
     }
 
     public function showMap(Request $request)
@@ -128,7 +131,13 @@ class HomeController extends Controller
     public function Search(Request $request)
     {
         $search = $request->q;
-        $data = Products::where("name", "like", '%' . $request->q . '%')->where('status',1)->where('type',0)->orderBy('id', 'desc')->paginate(8);
+
+        $locale = Session::get('locale');
+        $data = ServiceTranslation::join('services','services.id','=','service_translations.service_id')
+        ->where("title", "like", '%' . $request->q . '%')
+        ->where('service_translations.locale',$locale)
+        ->where('services.status', 1)->orderBy('services.id', 'DESC')->paginate(8);;
+
         $settings = Config::all(['name', 'value'])
             ->keyBy('name')
             ->transform(function ($setting) {

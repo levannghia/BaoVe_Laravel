@@ -8,7 +8,7 @@ use App\Models\Config;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\DB;
 
 class StandardController extends Controller
 {
@@ -52,21 +52,16 @@ class StandardController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
         $request->validate([
-            'title' => 'required|unique:news,title|max:255',
-            'description' => 'required',
             'stt' => 'required|numeric',
             'status' => 'required',
             'photo' => 'required|mimes:jpg,png,jpeg,gif'
         ],[
-                "title.required" => "Vui lòng nhập tiêu đề",
-                "title.unique" => "Sản phẩm đã tồn tại",
-                "title.max" => "Tên sản phẩm không quá 255 ký tự",
                 "status.required" => "Vui lòng chọn trạng thái",
-                "description.required" => "Vui lòng nhập mô tả",
                 "stt.required" => "Vui lòng nhập số thứ tự",
                 "stt.numeric" => "Trường số thứ tự phải là số",
                 "photo.required" => "Vui lòng thêm hình ảnh",
@@ -74,10 +69,22 @@ class StandardController extends Controller
         ]);
 
         $standard = new Standard;
-        $standard->title = $request->title;
+        $standard->fill([
+            'en' => [
+                'title' => $data['title:en'],
+                'description' => $data['description:en'],
+                
+            ],
+            'vi' => [
+                'title' => $data['title:vi'],
+                'description' => $data['description:vi'],
+              
+            ],
+        ]);
+
         $standard->stt = $request->stt;
         $standard->status = $request->status;
-        $standard->description = $request->description;
+        
         if ($request->hasFile('photo')) {
             $file = $request->photo;
             $file_name = Str::slug($file->getClientOriginalName(), "-") . "-" . time() . "." . $file->getClientOriginalExtension();
@@ -121,12 +128,18 @@ class StandardController extends Controller
             return $setting->value; // return only the value
         })->toArray();
         $standard = Standard::find($id);
+
+        $standard_vi = DB::table('standards')->join('standard_translations','standard_translations.standard_id','=','standards.id')
+        ->where('standard_translations.standard_id',$id)->where('standard_translations.locale','vi')->first();
+        // dd($news_vi['news_id']);
+        $standard_en = DB::table('standards')->join('standard_translations','standard_translations.standard_id','=','standards.id')
+        ->where('standard_translations.standard_id',$id)->where('standard_translations.locale','en')->first();
         if(isset($standard)){
             $row = json_decode(json_encode([
                 "title" => "Cập nhật tiêu chí",
                 "desc" => "Cập nhật tiêu chí: " . $standard->title
             ]));
-            return view("admin.standard.edit",compact('standard','row', 'settings'));
+            return view("admin.standard.edit",compact('standard','standard_vi','standard_en','row', 'settings'));
         }
         return abort(404);
     }
@@ -140,30 +153,34 @@ class StandardController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
         $settings = Config::all(['name', 'value'])->keyBy('name')->transform(function ($setting) {
             return $setting->value; // return only the value
         })->toArray();
         $standard = Standard::find($id);
         $request->validate([
-            'title' => 'required|unique:standards,title,'.$standard->id.'|max:255',
-            'description' => 'required',
             'status' => 'required',
             'stt' => 'required|numeric',
             'photo' => 'mimes:jpg,png,jpeg,gif'
         ],[
-                "title.required" => "Vui lòng nhập tiêu đề",
-                "title.unique" => "Sản phẩm đã tồn tại",
-                "title.max" => "Tên sản phẩm không quá 255 ký tự",
                 "status.required" => "Vui lòng chọn trạng thái",
-                "description.required" => "Vui lòng nhập mô tả",
                 "stt.required" => "Vui lòng nhập số thứ tự",
                 "stt.numeric" => "Trường số thứ tự phải là số",
                 "photo.mimes" => "Chọn đúng đinh dạng hình ảnh: jpg, png, jpeg, gif"
         ]);
        
-        $standard->title = $request->title;
+        $standard->fill([
+            'en' => [
+                'title' => $data['title:en'],
+                'description' => $data['description:en'],
+            ],
+            'vi' => [
+                'title' => $data['title:vi'],
+                'description' => $data['description:vi'],
+            ],
+        ]);
+
         $standard->status = $request->status;
-        $standard->description = $request->description;
         $standard->stt = $request->stt;
         
         if ($request->hasFile('photo')) {

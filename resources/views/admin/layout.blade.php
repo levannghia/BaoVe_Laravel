@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin - @yield('title')</title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <link rel="stylesheet" href="{{ asset('public/dashboard/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/dashboard/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('public/dashboard/vendors/css/vendor.bundle.addons.css') }}">
@@ -85,6 +87,8 @@
     <script src="{{ asset('public/dashboard/js/select2.js') }}"></script>
     <!-- End custom js for this page-->
     {{-- charjs --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     {{-- <script src="{{ asset('dashboard/js/chart.js?v='.time()) }}"></script> --}}
     <!---- databale -->
     <script src="{{ asset('public/dashboard/js/data-table.js') }}"></script>

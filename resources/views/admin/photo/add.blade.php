@@ -39,6 +39,8 @@
                                 <?php
                                 if($getType == "slide"){
                                     $thumbsize = json_decode($settings['THUMB_SIZE_SLIDER']);
+                                }elseif ($getType == "album") {
+                                    $thumbsize = json_decode($settings['THUMB_SIZE_ALBUM']);
                                 }elseif ($getType == "partner") {
                                     $thumbsize = json_decode($settings['THUMB_SIZE_PARTNER']);
                                 }elseif ($getType == "social-top") {

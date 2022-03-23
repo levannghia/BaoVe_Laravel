@@ -24,6 +24,13 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] .'/public/upload/images/seoPage/th
                     </div>
                 </div>
             </div>
+            <div class="share">
+                <div class="fb-like" data-href="{{ URL::current() }}" data-width="" data-layout="button_count"
+                    data-action="like" data-size="small" data-share="true"></div>
+                <div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="1"
+                    data-color="blue" data-customize="false"></div>
+            </div>
+            <div class="clear" style="padding-bottom: 20px;"></div>
         </div>
     </div>
     {{-- <div class="map">

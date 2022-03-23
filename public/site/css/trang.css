@@ -84,12 +84,17 @@ ul.navbar-nav.ml-auto {
 }
 
 .title-news {
-    color: #333;
-    font-size: 20px;
+    color: #2A00FF;
+    font-size: 19px;
     display: block;
     line-height: normal;
     margin-bottom: 17px;
     font-weight: bold;
+}
+
+.title-news:hover {
+    color: #F00;
+    transition: 0.4s;
 }
 
 .product-new {
@@ -255,16 +260,6 @@ div.wapper {
     padding: 0px 5px;
 }
 
-div.copy-right .cop-l {
-    /* height: 40px; */
-    line-height: 10px;
-    color: #fff;
-    font-size: 14px;
-    width: 470px;
-    float: left;
-    margin-top: 18px;
-}
-
 div#lienket {
     /* margin-top: 10px; */
     /* padding-top: 10px; */
@@ -296,22 +291,34 @@ div.tieude_giua {
     border-radius: 4px;
     text-transform: uppercase;
     position: relative;
-    font-family: 'RobotoCondensedRegular';
-    font-size: 18px;
+    /* font-family: 'RobotoCondensedRegular'; */
+    font-size: 17px;
 }
-.banner-imgall{
+
+.banner-imgall {
     margin-top: 0px;
     background: url(../images/bg_imgAll.png) top center no-repeat;
     padding: 45px 0;
     background-size: 100% 100%;
 }
-.banner-imgall h2{color: #fff;}
-.banner-imgall .distance:after{background: #fff;}
-.banner-imgall .distance{padding-top: 0;}
+
+.banner-imgall h2 {
+    color: #fff;
+}
+
+.banner-imgall .distance:after {
+    background: #fff;
+}
+
+.banner-imgall .distance {
+    padding-top: 0;
+}
+
 #bando_footer iframe {
     width: 100%;
     height: 440px;
 }
+
 div#search input {
     padding: 0px 10px;
     float: left;
@@ -320,6 +327,7 @@ div#search input {
     width: 200px;
     font-style: italic;
 }
+
 div#search button {
     float: right;
     margin-right: 5px;
@@ -327,17 +335,20 @@ div#search button {
     color: #777676;
     font-size: 17px;
 }
+
 div#search {
     background: #fff;
     border-radius: 6px;
     float: right;
     margin-left: 40px;
 }
-.btn-outline-success{
+
+.btn-outline-success {
     border-color: #fff;
     padding: 0 !important;
 }
-.btn-outline-success:hover{
+
+.btn-outline-success:hover {
     background-color: #fff;
     border-color: #fff;
 }

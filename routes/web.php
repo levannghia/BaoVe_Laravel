@@ -21,6 +21,7 @@ use App\Http\Controllers\admin\RecruitController;
 use App\Http\Controllers\admin\SeoPageController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\YKienKHControlle;
+use App\Http\Controllers\site\AlbumSiteController;
 use App\Http\Controllers\site\HomeController;
 use App\Http\Controllers\site\NewsSiteController;
 use App\Http\Controllers\site\PageSiteController;
@@ -76,6 +77,9 @@ Route::get("/search", [HomeController::class, "Search"])->name('search.product')
 Route::get("/tin-tuc/{slug}", [NewsSiteController::class, "getNewsBySlug"])->name('get.news.slug');
 Route::get("/tin-tuc", [NewsSiteController::class, "getAllNews"])->name('get.news');
 
+//Album
+Route::get("/album", [AlbumSiteController::class, "getAllAlbum"])->name('get.album');
+
 //service
 Route::get("/dich-vu/{slug}", [ServiceSiteController::class, "getServiceBySlug"])->name('get.service.slug');
 Route::get("/dich-vu", [ServiceSiteController::class, "getAllService"])->name('get.service');
@@ -90,7 +94,7 @@ Route::post("/post-lien-he", [PageSiteController::class, "postLienHe"])->name('p
 Route::get("/gioi-thieu", [PageSiteController::class, "getPageGioiThieu"])->name('get.page.gioi.thieu');
 
 //video
-Route::get("/video", [VideoSiteController::class, "getAllVideo"])->name('get.video');
+// Route::get("/video", [VideoSiteController::class, "getAllVideo"])->name('get.video');
 
 //Cart
 // Route::post("/cart", [CartController::class, "saveCart"])->name('save.cart');
@@ -101,6 +105,8 @@ Route::get("/video", [VideoSiteController::class, "getAllVideo"])->name('get.vid
 //location
 Route::get("/quan-huyen", [LocationController::class, "loadQuanHuyen"]);
 Route::get("/phuong-xa", [LocationController::class, "loadPhuongXa"]);
+//captcha
+Route::get("/captcha", [LocationController::class, "captcha"]);
 
 //order
 // Route::post("/order/check-out", [OrderSiteController::class, "checkOut"])->name('check.out');
@@ -124,7 +130,8 @@ Route::prefix('admin')->group(function () {
         //dashboard
         Route::name("admin.dashboard.")->controller(DashboardController::class)->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::post('/', 'thongKe')->name('thong.ke');
+            Route::post('/thong-ke', 'thongKe')->name('thong.ke');
+            Route::post('/thong-ke-now', 'thongKeNow')->name('thong.ke.now');
             // Route::get('/test', 'test');
         });
         // //Category LV1
@@ -278,7 +285,10 @@ Route::prefix('admin')->group(function () {
         Route::name('admin.photo.')->prefix('photo')->controller(PhotoController::class)->group(function () {
             Route::get('/logo', 'getLogo')->name('logo');
             Route::get('/favicon', 'getFavicon')->name('favicon');
+            Route::get('/banner-content', 'getBannerContent')->name('banner.content');
             Route::post('/photo/{id}', 'postPhoto')->name('post.photo');
+            Route::get('/banner-header', 'getBannerHeader')->name('banner.header');
+            Route::post('/banner/{type}', 'postBannerHeader')->name('post.banner.header');
 
             Route::get('/add/{type}', 'create')->name('create.list');
             Route::post('/store/{type}', 'store')->name('store');
@@ -312,17 +322,17 @@ Route::prefix('admin')->group(function () {
         });
 
         //order
-        Route::name('admin.order.')->prefix('don-hang')->controller(OrderController::class)->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/add', 'create')->name('add');
-            Route::post('/store', 'store')->name('store');
-            Route::get('/{id}', 'orderDetail')->name('edit');
-            Route::post('/update/{id}', 'update')->name('update');
-            Route::get('/delete/{id}', 'destroy')->name('delete');
-            Route::get('/delete-all/{id}', 'deleteAll')->name('delete.all');
-            Route::post('/status', 'status')->name('status');
-            Route::post('/resorting', 'resortPosition')->name('resorting');
-        });
+        // Route::name('admin.order.')->prefix('don-hang')->controller(OrderController::class)->group(function () {
+        //     Route::get('/', 'index')->name('index');
+        //     Route::get('/add', 'create')->name('add');
+        //     Route::post('/store', 'store')->name('store');
+        //     Route::get('/{id}', 'orderDetail')->name('edit');
+        //     Route::post('/update/{id}', 'update')->name('update');
+        //     Route::get('/delete/{id}', 'destroy')->name('delete');
+        //     Route::get('/delete-all/{id}', 'deleteAll')->name('delete.all');
+        //     Route::post('/status', 'status')->name('status');
+        //     Route::post('/resorting', 'resortPosition')->name('resorting');
+        // });
 
         // //Ý kiến khách hàng
         // Route::name('admin.y.kien.')->prefix('y-kien-khach-hang')->controller(YKienKHControlle::class)->group(function () {

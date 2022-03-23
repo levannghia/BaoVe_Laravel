@@ -17,7 +17,7 @@
                                         <tr>
                                             <th></th>
                                             <th>STT</th>
-                                            @if ($getType != 'slide')
+                                            @if ($getType != 'slide' && $getType != 'album')
                                             <th>Tiêu đề</th>
                                             @endif
                                             <th>Photo</th>
@@ -32,7 +32,7 @@
                                                     <th><input type="checkbox" name="check[]" value="{{ $item->id }}" />
                                                     </th>
                                                     <td>{{ $item->stt }}</td>
-                                                    @if ($getType != 'slide')
+                                                    @if ($getType != 'slide' && $getType != 'album')
                                                     <td>{{ $item->title }}</td>
                                                     @endif
                                                     <td>

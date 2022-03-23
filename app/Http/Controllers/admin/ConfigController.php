@@ -28,6 +28,8 @@ class ConfigController extends Controller
         
         $phone = Config::find($settings['PHONE']);
         $phone->value = $request->phone;
+        $phoneTable = Config::find($settings['DTBAN']);
+        $phoneTable->value = $request->phoneTable;
         $title = Config::find($settings['TITLE']);
         $title->value = $request->title;
         $address = Config::find($settings['ADDRESS']);
@@ -65,7 +67,7 @@ class ConfigController extends Controller
         // $gioi_thieu_CT = Config::find($settings['GIOI_THIEU_CONG_TY']);
         // $gioi_thieu_CT->value = $request->gioi_thieu_CT;
       
-        if($phone->save() && $title->save() && $address->save() && $email->save() && $zalo->save() && $website->save() && $map_toa_do->save() && 
+        if($phoneTable->save() && $phone->save() && $title->save() && $address->save() && $email->save() && $zalo->save() && $website->save() && $map_toa_do->save() && 
         $map_iframe->save() && $analytics->save() && $master_tool->save() && $phan_trang_bv->save() && $phan_trang_sp->save() && $hotline->save() && $head_js->save() && 
         $seo_description->save() && $seo_keyword->save() && $seo_title->save() && $fanpage->save()){
             return redirect()->back()->with(["type"=>"success","message"=>"Cập nhật thành công"]);

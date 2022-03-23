@@ -45,7 +45,7 @@ class ServiceSiteController extends Controller
                 return $setting->value; // return only the value
             })
             ->toArray();
-        $seoPage = SeoPage::where('type', 'tin-tuc')->first();
+        $seoPage = SeoPage::where('type', 'san-pham')->first();
         $image = json_decode(
             $seoPage->options
         );

@@ -41,7 +41,11 @@ $urlPhoto = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/seoPage/t
                                                     </h4>
                                                 </a>
                                                 <p class="des-news" maxlength="200">
-                                                    {{ $item->description }}
+                                                    @if (strlen($item->description) > 201)
+                                                    {{ substr($item->description, 0, 201) . '...' }}
+                                                    @else
+                                                    {{$item->description}}
+                                                    @endif
                                                 </p>
                                             </div>
                                         </div>

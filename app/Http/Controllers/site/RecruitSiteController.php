@@ -43,12 +43,12 @@ class RecruitSiteController extends Controller
                 return $setting->value; // return only the value
             })
             ->toArray();
-        $seoPage = SeoPage::where('type', 'tin-tuc')->first();
+        $seoPage = SeoPage::where('type', 'tuyen-dung')->first();
         $image = json_decode(
             $seoPage->options
         );
         $locale = Session::get('locale');
-        $recruit = RecruitTranslation::join('recruits','recruits.id','=','recruit_translations.service_id')->where('recruit_translations.locale',$locale)
+        $recruit = RecruitTranslation::join('recruits','recruits.id','=','recruit_translations.recruit_id')->where('recruit_translations.locale',$locale)
         ->where('recruits.status', 1)->orderBy('recruits.id', 'DESC')->paginate($settings['PHAN_TRANG_BAI_VIET']);
         return view('site.recruit.index', compact('recruit', 'settings', 'seoPage','image'));
     }

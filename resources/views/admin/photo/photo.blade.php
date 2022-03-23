@@ -18,6 +18,8 @@
                                     $thumbsize = json_decode($settings['THUMB_SIZE_LOGO']);
                                 }elseif ($data->type == "favicon") {
                                     $thumbsize = json_decode($settings['THUMB_SIZE_FAVICON']);
+                                }elseif ($data->type == "banner-content") {
+                                    $thumbsize = json_decode($settings['THUMB_SIZE_BANNER_CONTENT']);
                                 } 
                                 ?>
                                 <label for="slug">Hình ảnh</label><span>
@@ -30,7 +32,7 @@
                                     name="photo">
                             </div>
                             <div class="form-group">
-                                <img src="{{asset('public/upload/images/photo/thumb/'.$data->photo)}}" id="previewImage" style="width: 120px !important;" class="form-control img-fluid" alt="">
+                                <img src="{{asset('public/upload/images/photo/thumb/'.$data->photo)}}" id="previewImage" style="<?php if($data->type != "banner-content"){ echo 'width: 120px !important';}?>" class="form-control img-fluid" alt="">
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         </form>

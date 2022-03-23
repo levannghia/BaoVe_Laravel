@@ -2,11 +2,30 @@
 use App\Models\Config;
 use App\Models\PageTranslation;
 use Illuminate\Support\Facades\Session;
+use App\Models\ServiceTranslation;
 
 $locale = Session::get('locale');
-$footer = PageTranslation::join('pages','pages.id','=','page_translations.page_id')->where('page_translations.locale',$locale)->where('pages.slug','footer')->first();
+$serviceFooter = ServiceTranslation::join('services', 'services.id', '=', 'service_translations.service_id')
+    ->where('service_translations.locale', $locale)
+    ->where('services.status', 1)
+    ->orderBy('services.id', 'DESC')
+    ->limit(5)
+    ->get();
+$serviceHeader = ServiceTranslation::join('services', 'services.id', '=', 'service_translations.service_id')
+    ->where('service_translations.locale', $locale)
+    ->where('services.status', 1)
+    ->orderBy('services.id', 'DESC')
+    ->get();
+$footer = PageTranslation::join('pages', 'pages.id', '=', 'page_translations.page_id')
+    ->where('page_translations.locale', $locale)
+    ->where('pages.slug', 'footer')
+    ->first();
 $favicon = DB::table('photos')
     ->where('type', 'favicon')
+    ->first();
+$bannerHeader = DB::table('photos')
+    ->where('type', 'banner-header')
+    ->where('lang', $locale)
     ->first();
 $logo = DB::table('photos')
     ->where('type', 'logo')
@@ -85,14 +104,17 @@ $mxh_top = DB::table('photos')
     <link rel="stylesheet" href="{{ asset('public/site/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/site/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
     <title>@yield('SEO_title')</title>
     {!! $settings['ANALYTICS'] !!}
     {!! $settings['WEB_MASTER_TOOL'] !!}
     {!! $settings['HEAD_JS'] !!}
 </head>
 
-<body>
+<body class="preloading">
+    <div class="load">
+        <img src="{{ asset('public/site/images/load.gif') }}" alt="">
+    </div>
     {{-- header --}}
     @include('site.inc.header')
 
@@ -103,7 +125,7 @@ $mxh_top = DB::table('photos')
     @include('site.inc.footer')
 
     <!-- Scrollable modal -->
-
+    <div id="toptop" title="go to top"></div>
     <!-- Optional JavaScript -->
     @include('site.inc.script')
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -122,16 +144,36 @@ $mxh_top = DB::table('photos')
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
-    
+
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.min.js"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-simplyscroll/2.1.1/jquery.simplyscroll.css" media="all"
         type="text/css">
     <script type="text/javascript">
+        var showTopTop = 200;
+
+        $(window).on('load', function(event) {
+            $('body').removeClass('preloading');
+            $('.load').delay(700).fadeOut('fast');
+        });
+
+        $(window).scroll(function() {
+            if($(this).scrollTop() >= showTopTop){
+                $('#toptop').fadeIn();
+            }else{
+                $('#toptop').fadeOut();
+            }
+        });
+
+        $('#toptop').click(function(){
+            $('html, body').animate({scrollTop: 0}, 'slow');
+        });
+
         (function($) {
             $(function() { //on DOM ready
                 $("#scroller").simplyScroll({

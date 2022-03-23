@@ -17,6 +17,19 @@
             </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-search position-relative">
+                <a class="nav-link d-flex justify-content-center align-items-center" target="_blank" title="Quay về trang chủ" id="navbarSearchButton"
+                    href="/">
+                    <i class="fa fa-home mx-0"></i>
+                </a>
+                <input type="text" class="form-control" placeholder="Search..." id="navbarSearchInput">
+            </li>
+            <li class="nav-item dropdown">
+                <a title="Liên hệ" class="nav-link count-indicator d-flex justify-content-center align-items-center"
+                    id="notificationDropdown" href="/admin/contact">
+                    <i class="fa fa-envelope-o mx-0"></i>
+                </a>
+            </li>
             {{-- <li class="nav-item nav-search position-relative" id="navbarSearch">
                 <a class="nav-link d-flex justify-content-center align-items-center" id="navbarSearchButton"
                     href="#">
@@ -75,18 +88,19 @@
                 $contact = DB::table('contacts')->where('status',0)->count();
                 $order = DB::table('orders')->where('status',0)->count();
             @endphp
+            
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
                     id="notificationDropdown" href="#" data-toggle="dropdown">
                     <i class="mdi mdi-bell-outline mx-0"></i>
-                    @if ($contact != 0 || $order != 0)
+                    @if ($contact != 0)
                     <span class="count"></span>
                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="notificationDropdown">
                     <p class="mb-0 font-weight-normal float-left dropdown-header"> Thông báo</p>
-                    <a class="dropdown-item preview-item" href="{{route('admin.contact.index')}}">
+                    <a class="dropdown-item preview-item" title="Thông báo" href="{{route('admin.contact.index')}}">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-primary">
                                 <i class="mdi mdi-account-box mx-0"></i>
@@ -112,7 +126,7 @@
                             </p>
                         </div>
                     </a> --}}
-                    <a class="dropdown-item preview-item" href="{{route('admin.order.index')}}">
+                    {{-- <a class="dropdown-item preview-item" href="{{route('admin.order.index')}}">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-primary">
                                 <i class="mdi mdi-account-box mx-0"></i>
@@ -124,7 +138,7 @@
                                 {{$order}} đơn đặt hàng mới
                             </p>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
             </li>
             <li class="nav-item nav-profile dropdown mr-0 mr-sm-3">

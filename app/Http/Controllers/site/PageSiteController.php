@@ -64,17 +64,19 @@ class PageSiteController extends Controller
             'address' => 'required',
             'note' => 'required',
             'content' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'captcha' => 'required'
         ], [
             "name.required" => "Vui lòng nhập họ tên",
             "name.max" => "Tên không quá 40 ký tự",
             "phone.required" => "Vui lòng nhập số điện thoại",
             "address.required" => "Vui lòng nhập địa chỉ",
-            "note.required" => "Vui lòng nhập tiêu đề",
+            "note.required" => "Vui lòng nhập chủ đề",
             "content.required" => "Vui lòng nhập nội dung",
             "email.required" => "Vui lòng nhập email",
             "phone.numeric" => "Trường này phải là số",
-            "email.email" => "Vui lòng nhập email"
+            "email.email" => "Vui lòng nhập email",
+            "captcha.required" => "Vui lòng nhập captcha",
         ]);
 
 

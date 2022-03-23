@@ -49,12 +49,12 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.order.index') }}">
                 <i class="mdi mdi-bell menu-icon"></i>
                 <span class="menu-title">Quản lý đơn hàng</span>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false"
                 aria-controls="charts">
@@ -89,7 +89,12 @@
                             href="{{ route('admin.photo.logo') }}">Logo</a></li>
                     <li class="nav-item"> <a class="nav-link"
                             href="{{ route('admin.photo.favicon') }}">Favicon</a></li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.photo.banner.content') }}">Banner content</a></li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.photo.banner.header') }}">Banner header</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/photo/slide">Slideshow</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/photo/album">Album</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/photo/partner">Đối tác</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/photo/social-top">Mạng xã hội
                             top</a></li>

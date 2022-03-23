@@ -13,15 +13,39 @@
                             <h4 class="card-title">{{ $row->desc }}</h4>
                             @include('admin.inc.error')
                             @csrf
-                            <div class="form-group">
-                                <label for="slug">Tiêu đề</label>
-                                <input type="text" class="form-control" value="{{ old('title', $standard->title) }}"
-                                    id="slug" name="title" placeholder="* Tiêu đề" onkeyup="changeToString()">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleTextarea1">Mô tả</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"
-                                    name="description">{{ old('description', $standard->description) }}</textarea>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                        aria-controls="home" aria-selected="true">Tiếng Việt</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                        aria-controls="profile" aria-selected="false">Tiếng Anh</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="form-group">
+                                        <label for="slug">Tiêu đề</label>
+                                        <input type="text" class="form-control" value="{{ old('title:vi',$standard_vi->title) }}" id="slug"
+                                            name="title:vi" placeholder="* Tiêu đề">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Mô tả</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description:vi">{{ old('description:vi',$standard_vi->description) }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="form-group">
+                                        <label for="slug">Tiêu đề</label>
+                                        <input type="text" class="form-control" value="{{ old('title:en',$standard_en->title) }}" id="slug"
+                                            name="title:en" placeholder="* Tiêu đề">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Mô tả</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description:en">{{ old('description:en',$standard_en->description) }}</textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">Số thứ tự</label>

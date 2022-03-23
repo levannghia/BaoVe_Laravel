@@ -58,7 +58,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary mr-2">Submit</button>
-            <a href="{{ route('admin.nha.dat.index') }}" class="btn btn-light">Cancel</a>
+            <a href="{{ route('admin.contact.index') }}" class="btn btn-light">Cancel</a>
         </form>
     </div>
 @endsection

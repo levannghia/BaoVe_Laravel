@@ -22,10 +22,10 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             {{-- silder --}}
             @include('site.inc.slide')
             <!-- content -->
-            <h2 class="product-new">GIỚI THIỆU VỀ CHÚNG TÔI</h2>
+            <h2 class="product-new">{{__('lang.about_us')}}</h2>
             <div class="pr">
                 <p>{!! substr($pageGT->content, 0, 900) !!}</p>
-                <a class="xt" href="/gioi-thieu">{{__('lang.more')}}</a>
+                <a class="xt" href="/gioi-thieu">{{ __('lang.more') }}</a>
             </div>
             <div class="clears"></div>
             <div class="service-blocks">
@@ -38,8 +38,14 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                                     alt="{{ $item->title }}">
                                 <div class="card-body">
                                     <p class="card-title" style="text-transform: uppercase;"><a
-                                            href="#">{{ $item->title }}</a></p>
-                                    <p class="card-text">{{ $item->description }}</p>
+                                            href="/dich-vu/{{$item->slug}}">{{ $item->title }}</a></p>
+                                    <p class="card-text">
+                                        @if (strlen($item->description) > 122)
+                                        {{ substr($item->description, 0, 122) . '...' }}
+                                        @else
+                                        {{$item->description}}
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -50,16 +56,16 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
             <div class="box-center mt-5">
                 <div class="row">
                     <div class="col-md-6 box-logo">
-                        <div class="box-tintuc-head-mt">{{__('lang.recruitment2')}}</div>
+                        <div class="box-tintuc-head-mt">{{ __('lang.recruitment2') }}</div>
                         <div class="box-tintuc-ct-mt">
                             <div class="box-tintuc-ct-mt1">
                                 <div class="box-tintuc-ten-mt1">
-                                    <p>{{$recruit->title}}</p>
+                                    <p>{{ $recruit->title }}</p>
                                 </div>
                                 <div class="mota-tintuc-mt">
                                     {{ $recruit->description }}
                                 </div>
-                                <a href="/tuyen-dung/{{$recruit->slug}}"> {{__('lang.more')}} ...</a>
+                                <a href="/tuyen-dung/{{ $recruit->slug }}"> {{ __('lang.more') }} ...</a>
                                 <div class="clear"></div>
                             </div>
                         </div>
@@ -77,7 +83,7 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                                     @endforeach
                                 </div>
                             </div>
-                            <img src="{{ asset('public/site/images/bao-ve-6006.png') }}" alt="">
+                            <img src="{{ asset('public/upload/images/photo/thumb/'.$bannerContent->photo) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -87,20 +93,22 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
 
         <div class="banner-criteria">
             <div class="container">
-                <h2 class="distance">{{__('lang.criteria')}}</h2>
-                <p class="discription">{{__('lang.title_criteria')}}</p>
+                <h2 class="distance">{{ __('lang.criteria') }}</h2>
+                <p class="discription">{{ __('lang.title_criteria') }}</p>
                 <div class="row criteria-blocks">
                     <div class="owl-carousel owl-theme">
                         @foreach ($standard as $key => $item)
                             <div class="item">
                                 <div class="col-md-4 criteria-option col-6 img-flucol-6">
                                     <div class="hinh_chonct">
-                                        <a href="#" ><img class="eeee" src="{{asset('public/upload/images/standard/thumb/'.$item->photo) }}" alt="GIÁ CẢ CẠNH TRANH"></a>
+                                        <a href="#"><img class="eeee"
+                                                src="{{ asset('public/upload/images/standard/thumb/' . $item->photo) }}"
+                                                alt="GIÁ CẢ CẠNH TRANH"></a>
                                     </div>
                                     <div class="wrapper">
-                                        <h4 class="third after">{{$item->title}}</h4>
+                                        <h4 class="third after">{{ $item->title }}</h4>
                                     </div>
-                                    <p class="standard-content">{{$item->description}}</p>
+                                    <p class="standard-content">{{ $item->description }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -184,33 +192,26 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
         </div> --}}
         <div class="banner-criteria banner-imgall">
             <div class="container">
-                <h2 class="distance">ALBUM HÌNH ẢNH</h2>
-                <div class="row" style="margin-top: 35px;">
-                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
-                        <div class="img_all">
-                            <a href="#" ><img class="eeee" src="/public/site/images/bv1.png" alt="GIÁ CẢ CẠNH TRANH"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
-                        <div class="img_all">
-                            <a href="#" ><img class="eeee" src="/public/site/images/bv2.png" alt="GIÁ CẢ CẠNH TRANH"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
-                        <div class="img_all">
-                            <a href="#" ><img class="eeee" src="/public/site/images/bv3.png" alt="GIÁ CẢ CẠNH TRANH"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 criteria-option col-6 img-flucol-6">
-                        <div class="img_all">
-                            <a href="#" ><img class="eeee" src="/public/site/images/bv4.png" alt="GIÁ CẢ CẠNH TRANH"></a>
-                        </div>
+                <h2 class="distance">{{ __('lang.album_hinhanh') }}</h2>
+                <div class="album-hinh-anh" style="margin-top: 35px;">
+                    <div class="owl-carousel owl-theme">
+                        @foreach ($album as $item)
+                            <div class="item">
+                                <div class="col-md-3 criteria-option col-6 img-flucol-6">
+                                    <div class="img_all">
+                                        <img class="eeee"
+                                                src="{{ asset('public/upload/images/photo/thumb/' . $item->photo) }}"
+                                                alt="{{ asset('public/upload/images/photo/thumb/' . $item->photo) }}">
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
         <div id="bando_footer">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d125391.10858599901!2d106.67603522594862!3d10.851648784291584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d10.756877399999999!2d106.6338518!4m3!3m2!1d10.950441999999999!2d106.875537!5e0!3m2!1svi!2s!4v1513755915827" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            {!! $settings['MAP_IFRAME'] !!}
         </div>
 
         <!-- Modal -->
@@ -270,6 +271,26 @@ $urlLogo = $protocol . $_SERVER['HTTP_HOST'] . '/public/upload/images/photo/thum
                     },
                     1000: {
                         items: 3
+                    }
+                }
+            });
+
+            $('.album-hinh-anh .owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                dots:false,
+                nav: false,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
                     }
                 }
             });
